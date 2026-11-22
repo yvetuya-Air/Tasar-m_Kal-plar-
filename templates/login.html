@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Giriş yap · Kütüphane{% endblock %}
+{% block content %}
+<div class="login-layout">
+  <section class="login-story" aria-label="Kütüphane">
+    <span class="eyebrow">BİLGİYE AÇILAN KAPINIZ</span>
+    <h1>Bir kitapla<br>yeni bir dünya.</h1>
+    <p>Kütüphanenize tek bir yerden ulaşın. Koleksiyon, ödünç ve rezervasyon işlemleri için ortak çalışma alanınız.</p>
+    <div class="book-art" aria-hidden="true"><div class="book-spine">KÜTÜPHANE</div><div class="book-cover">Bilginin<br>izinde.<span>EBLG443 / 2026</span></div></div>
+    <span class="story-foot">Kütüphane Yönetim Sistemi · EBLG443</span>
+  </section>
+  <section class="login-form-panel">
+    <span class="badge">TEKRAR HOŞ GELDİNİZ</span>
+    <h2>Hesabınıza giriş yapın</h2>
+    <p>Kullanıcı adınızı ve parolanızı girerek devam edin.</p>
+    {% if error %}<div class="notice error" role="alert">{{ error }}</div>{% endif %}
+    <form method="post" action="{{ url_for('auth.login') }}" class="login-form">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label for="username">Kullanıcı adı</label>
+      <input id="username" name="username" value="{{ username }}" placeholder="Kullanıcı adınız" autocomplete="username" maxlength="80" required>
+      <label for="password">Parola</label>
+      <input id="password" name="password" type="password" placeholder="Parolanız" autocomplete="current-password" maxlength="256" required>
+      <button class="button" type="submit">Giriş yap <span aria-hidden="true">→</span></button>
+    </form><p class="note"><a href="{{ url_for('auth.reset') }}">Parolamı sıfırla</a></p>
+    <p class="note">Hesap bilgilerinizi kütüphane yöneticinizden alabilirsiniz. Herkese açık kayıt sunulmamaktadır.</p>
+    <div class="login-footer"><span aria-hidden="true">◇</span> Yönetici ve üye hesaplarıyla güvenli erişim</div>
+  </section>
+</div>
+{% endblock %}

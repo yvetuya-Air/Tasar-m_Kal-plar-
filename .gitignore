@@ -1,0 +1,107 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.test-tmp/
+.ui-tools/
+.coverage
+htmlcov/
+.env
+.env.*
+!.env.example
+instance/
+*.sqlite3
+*.sqlite3-*
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.pem
+*.key
+*.p12
+credentials*.json
+service-account*.json
+*.log
+node_modules/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+virtualenv/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+
+# SQLite local databases
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite3-wal
+*.sqlite3-shm
+
+# Flask local instance
+instance/
+.flaskenv
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Build and packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+pip-wheel-metadata/
+
+# IDEs and editors
+.vscode/
+.idea/
+
+# Local test artifacts
+test-results/
+playwright-report/
+coverage/
+

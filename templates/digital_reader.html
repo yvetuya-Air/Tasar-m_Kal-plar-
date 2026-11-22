@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}{{ book.title }} · Dijital Kütüphane{% endblock %}
+{% block content %}
+<a href="{{ url_for('digital.index') }}">← Dijital Kütüphane</a>
+<div class="page-heading"><h1>{{ book.title }}</h1></div>
+<section class="panel digital-reader" id="digital-reader" data-csrf="{{ csrf_token() }}"
+         data-position="{{ position }}" data-progress="{{ url_for('digital.progress', book_id=book.id) }}">
+  {% if info.page_count %}
+  <div class="reader-controls">
+    {% if text_view.enabled %}<a class="button secondary-button" href="{{ url_for('digital.reader',book_id=book.id) }}">Sayfa görüntüsüne dön</a>
+    {% else %}<a class="button secondary-button" href="{{ url_for('digital.reader',book_id=book.id,mode='text') }}">Metin görünümü</a>{% endif %}
+    <form class="search-controls" method="get" action="{{ url_for('digital.reader',book_id=book.id) }}">
+      <input type="hidden" name="mode" value="text">
+      <label for="pdf-query">PDF'de ara</label><input id="pdf-query" type="search" name="q" maxlength="100" value="{{ text_view.query }}" required>
+      <button class="button secondary-button" type="submit">Ara</button>
+    </form>
+  </div>
+  {% endif %}
+  {% if text_view.enabled %}
+  {% if text_view.query %}<section aria-labelledby="pdf-results">
+    <h2 id="pdf-results">Arama sonuçları</h2>
+    {% if text_view.matches %}<ul class="reader-controls">{% for match in text_view.matches %}
+      <li><a href="{{ url_for('digital.reader',book_id=book.id,mode='text',page=match,q=text_view.query) }}#pdf-text">Sayfa {{ match }}</a></li>
+    {% endfor %}</ul>{% if text_view.truncated %}<p>İlk 30 eşleşen sayfa gösteriliyor.</p>{% endif %}
+    {% else %}<p>Eşleşme bulunamadı.</p>{% endif %}
+  </section>{% endif %}
+  <nav class="reader-controls" aria-label="PDF sayfaları">
+    {% if position > 1 %}<a class="button secondary-button" href="{{ url_for('digital.reader',book_id=book.id,mode='text',page=position-1,q=text_view.query) }}#pdf-text">Önceki sayfa</a>{% endif %}
+    {% if position < info.page_count %}<a class="button secondary-button" href="{{ url_for('digital.reader',book_id=book.id,mode='text',page=position+1,q=text_view.query) }}#pdf-text">Sonraki sayfa</a>{% endif %}
+  </nav>
+  <article id="pdf-text" tabindex="-1" data-pages="{{ info.page_count }}">
+    <h2>Sayfa {{ position }} / {{ info.page_count }}</h2>
+    {% if text_view.text %}<div class="pdf-readable-text">{{ text_view.text }}</div>
+    {% else %}<p>Bu sayfada seçilebilir metin bulunamadı. Taranmış sayfayı görüntü kipinde açabilirsiniz.</p>{% endif %}
+  </article>
+  {% elif info.page_count %}
+  <div class="reader-controls">
+    <button class="button secondary-button" id="previous" type="button">Önceki</button>
+    <label for="page-number">Sayfa</label><input type="number" id="page-number" min="1" max="{{ info.page_count }}" value="{{ position|int }}">
+    <span>/ {{ info.page_count }}</span>
+    <button class="button secondary-button" id="next" type="button">Sonraki</button>
+    <label for="zoom">Yakınlaştırma</label><select id="zoom"><option value="0.8">%75</option><option value="1.4" selected>%100</option><option value="2">%150</option><option value="3">%200</option></select>
+    <button class="button secondary-button" id="fullscreen" type="button">Tam ekran</button>
+    <button class="button secondary-button" id="bookmark" type="button" aria-pressed="false">Sayfayı işaretle</button>
+    <label for="bookmarks">Ayraçlar</label><select id="bookmarks" data-url="{{ url_for('digital.bookmark', book_id=book.id) }}"><option value="">Sayfa seçin</option>{% for page in bookmarks %}<option value="{{ page }}">{{ page }}</option>{% endfor %}</select>
+  </div>
+  <div class="pdf-viewport"><img id="pdf-page" src="{{ url_for('digital.page_image', book_id=book.id, page=position|int) }}" data-first="{{ url_for('digital.page_image', book_id=book.id, page=1) }}" alt="Kitap sayfası"></div>
+  {% else %}
+  <audio id="audio-reader" controls preload="metadata" src="{{ url_for('digital.audio', book_id=book.id) }}"></audio>
+  <div class="reader-controls"><label for="speed">Oynatma hızı</label><select id="speed"><option value=".75">0,75×</option><option value="1" selected>1×</option><option value="1.25">1,25×</option><option value="1.5">1,5×</option><option value="2">2×</option></select>
+  <label for="volume">Ses düzeyi</label><input id="volume" type="range" min="0" max="1" step=".05" value="1"></div>
+  {% endif %}
+  <label for="reading-progress">İlerleme</label> <progress id="reading-progress" max="100" value="0"></progress>
+  <p class="note" id="reader-status" role="status"></p>
+  <noscript><p>Otomatik ilerleme kaydı ve okuyucu denetimleri için JavaScript gerekir.</p></noscript>
+</section>
+<script src="{{ url_for('static', filename='js/digital.js') }}" defer></script>
+{% endblock %}

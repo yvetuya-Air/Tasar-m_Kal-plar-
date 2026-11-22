@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}İade al · Kütüphane{% endblock %}
+{% block content %}<section class="panel"><span class="badge">KİTAP İADESİ</span><h1>İadeyi onaylayın</h1><p><strong>{{ row.title }}</strong> · {{ row.full_name }}</p>
+{% if error %}<div class="notice error" role="alert">{{ error }}</div>{% endif %}
+{% if row.returned_on %}<div class="notice">Bu kayıt {{ row.returned_on }} tarihinde iade edildi. Kesin ceza: {{ '%d,%02d'|format(row.penalty_cents // 100, row.penalty_cents % 100) }} TL.</div>
+{% else %}<dl class="profile"><dt>Son teslim tarihi</dt><dd>{{ row.due_on }}</dd><dt>İade tarihi</dt><dd>{{ today }}</dd><dt>Üye türü</dt><dd>{{ {'student':'Öğrenci','teacher':'Öğretmen','standard':'Normal Üye'}[row.member_type] }}</dd><dt>Gecikme</dt><dd>{{ days }} gün</dd><dt>Bugünkü ceza</dt><dd>{{ ('%.2f'|format(amount)).replace('.',',') }} TL</dd></dl><p class="note">İade anında güncel tarih ve veritabanındaki üye türüyle yeniden hesaplanır. Kayıt ve işlem günlüğü tek işlemde kaydedilir.</p>{% endif %}
+<form method="post" class="form-actions"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">{% if not row.returned_on and not error %}<button class="button" type="submit">İadeyi kaydet</button>{% endif %}<a href="{{ url_for('loans.index') }}">Ödünç işlemlerine dön</a></form></section>{% endblock %}

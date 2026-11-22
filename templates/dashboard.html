@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="panel">
+  <span class="badge">EBLG443 · Tasarım Kalıpları</span>
+  <h1>Kütüphaneniz, her an elinizin altında.</h1>
+  <p>Kitap koleksiyonunu inceleyin ve aradığınız esere ulaşın. Yönetici hesabınızla fiziksel ve elektronik kitapları yönetin.</p>
+  <div class="status"><span aria-hidden="true">●</span> Kitaplar, üyeler ve günlük işlemler tek bir çalışma alanında.</div>
+  <p class="note">Koleksiyonunuzu yönetin, ödünçleri takip edin ve kişisel bildirimlerinizi görüntüleyin. Hesabınıza uygun bilgilere güvenle ulaşın.</p>
+  <a class="button" href="{{ url_for('dashboard.panel') if g.user else url_for('auth.login') }}">{{ 'Panele git' if g.user else 'Kütüphaneye giriş yap' }} →</a>
+</section>
+{% endblock %}

@@ -1,0 +1,57 @@
+classDiagram
+    direction TB
+    class BookDataProvider {
+        <<abstract>>
+        +search_page(title, author, isbn, page)
+        +search_books(title, author, isbn)
+        +get_book(source_id)
+    }
+    class GoogleBooksAPI {
+        +__init__(api_key, http)
+        +search_volumes(query, start_index)
+        +get_volume(volume_id)
+    }
+    class OpenLibraryAPI {
+        +__init__(http)
+        +search_works(query, page, limit)
+        +get_work(work_id)
+    }
+    class GoogleBooksAdapter {
+        +__init__(api)
+        +search_books(title, author, isbn)
+        +search_page(title, author, isbn, page)
+        +get_book(source_id)
+        +adapt(item)
+    }
+    class OpenLibraryAdapter {
+        +__init__(api)
+        +search_books(title, author, isbn)
+        +search_page(title, author, isbn, page)
+        +adapt(work_id, doc, requested_isbn)
+        +get_book(source_id)
+    }
+    class BookImportData {
+        +source_id
+        +title
+        +author
+        +isbn
+        +thumbnail
+        +warnings
+        +description
+        +publisher
+        +publication_year
+        +language
+        +publication_date
+        +to_form()
+    }
+    class BookSearchPage {
+        +books
+        +has_next
+    }
+    BookDataProvider <|-- GoogleBooksAdapter
+    BookDataProvider <|-- OpenLibraryAdapter
+    GoogleBooksAdapter --> GoogleBooksAPI : api
+    OpenLibraryAdapter --> OpenLibraryAPI : api
+    GoogleBooksAdapter ..> BookImportData : dönüştürür
+    OpenLibraryAdapter ..> BookImportData : dönüştürür
+    BookSearchPage o-- BookImportData : sonuçlar

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Dijital Kütüphane{% endblock %}
+{% block content %}
+<div class="page-heading"><h1>Dijital Kütüphane</h1>{% if g.user.role == 'admin' %}<a class="button" href="{{ url_for('books.add') }}">Dijital kitap ekle</a>{% endif %}</div>
+<div class="import-grid">
+  {% for book, can_read in books %}
+  <article class="import-card">
+    {% if book.cover_url %}<div class="cover-frame"><img src="{{ book.cover_url }}" alt="" loading="lazy" referrerpolicy="no-referrer"></div>{% endif %}
+    <div class="import-info"><h2>{{ book.title }}</h2><p>{{ book.author }} · {{ 'Sesli Kitap' if book.book_type == 'audio' else 'Elektronik Kitap' }}</p>
+    {% if can_read and book.managed_media %}<a class="button" href="{{ url_for('digital.reader', book_id=book.id) }}">{{ 'Dinle' if book.book_type == 'audio' else 'Oku' }}</a>
+    {% elif can_read and book.file_url %}<a class="button" href="{{ book.file_url }}" rel="noreferrer">Harici dosyayı aç</a>
+    {% else %}<p>Okumak veya dinlemek için etkin ödünç kaydı gerekir.</p>{% endif %}</div>
+  </article>
+  {% else %}<p class="panel">Dijital kitap bulunamadı.</p>{% endfor %}
+</div>
+{% endblock %}

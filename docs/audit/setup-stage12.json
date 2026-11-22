@@ -1,0 +1,84 @@
+{
+  "executed_at": "2026-11-18T00:50:15.725306+03:00",
+  "independent_database": true,
+  "source_copy": ".test-tmp/docs12-setup-34e01b7fa42d448783fd2a144bb6dfc7",
+  "status": "passed",
+  "steps": [
+    {
+      "command": "python -m pip check",
+      "exit_code": 0,
+      "stdout": "No broken requirements found.",
+      "stderr": ""
+    },
+    {
+      "command": "python -c import secrets; assert len(secrets.token_hex(32)) == 64",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": "python -m flask --app app:create_app init-db",
+      "exit_code": 0,
+      "stdout": "Veritabanı hazırlandı; mevcut kayıtlar korundu.",
+      "stderr": ""
+    },
+    {
+      "command": "python -m flask --app app:create_app seed-demo",
+      "exit_code": 0,
+      "stdout": "Gösterim verileri eklendi.",
+      "stderr": ""
+    },
+    {
+      "command": "python -m flask --app app:create_app demo-accounts",
+      "exit_code": 0,
+      "stdout": "Yerel gösterim hesapları hazırlandı.",
+      "stderr": ""
+    },
+    {
+      "command": "python -m flask --app app:create_app check-db",
+      "exit_code": 0,
+      "stdout": "Veritabanı bütünlüğü ve yabancı anahtarlar geçerli.",
+      "stderr": ""
+    },
+    {
+      "command": "python -m flask --app app:create_app init-db",
+      "exit_code": 0,
+      "stdout": "Veritabanı hazırlandı; mevcut kayıtlar korundu.",
+      "stderr": ""
+    },
+    {
+      "command": "python -m flask --app app:create_app seed-demo",
+      "exit_code": 0,
+      "stdout": "Gösterim verileri zaten mevcut.",
+      "stderr": ""
+    },
+    {
+      "command": "python -m flask --app app:create_app demo-accounts",
+      "exit_code": 0,
+      "stdout": "Gösterim hesapları zaten mevcut; parolalar değiştirilmedi.",
+      "stderr": ""
+    },
+    {
+      "command": "python -m flask --app app:create_app check-db",
+      "exit_code": 0,
+      "stdout": "Veritabanı bütünlüğü ve yabancı anahtarlar geçerli.",
+      "stderr": ""
+    },
+    {
+      "command": "python -m flask --app app:create_app run --help",
+      "exit_code": 0,
+      "stdout": "Usage: python -m flask run [OPTIONS]\n\n  Run a local development server.\n\n  This server is for development purposes only. It does not provide the\n  stability, security, or performance of production WSGI servers.\n\n  The reloader and debugger are enabled by default with the '--debug' option.\n\nOptions:\n  --debug / --no-debug            Set debug mode.\n  -h, --host TEXT                 The interface to bind to.\n  -p, --port INTEGER              The port to bind to.\n  --cert PATH                     Specify a certificate file to use HTTPS.\n  --key FILE                      The key file to use when specifying a\n                                  certificate.\n  --reload / --no-reload          Enable or disable the reloader. By default\n                                  the reloader is active if debug is enabled.\n  --debugger / --no-debugger      Enable or disable the debugger. By default\n                                  the debugger is active if debug is enabled.\n  --with-threads / --without-threads\n                                  Enable or disable multithreading.\n  --extra-files PATH              Extra files that trigger a reload on change.\n                                  Multiple paths are separated by ';'.\n  --exclude-patterns PATH         Files matching these fnmatch patterns will\n                                  not trigger a reload on change. Multiple\n                                  patterns are separated by ';'.\n  --help                          Show this message and exit.",
+      "stderr": ""
+    },
+    {
+      "command": "Yalıtılmış demo giriş ve özel sayfa kontrolü",
+      "exit_code": 0,
+      "stdout": "{\"tables\": {\"users\": 2, \"members\": 3, \"books\": 2, \"categories\": 1, \"loans\": 2, \"reservations\": 1, \"notifications\": 1}, \"admin_login\": 302, \"private_pages\": 8}",
+      "stderr": ""
+    }
+  ],
+  "limits": [
+    "Python/Git grafik kurucuları ve uzak git clone yürütülmedi.",
+    "run --help CLI seçeneklerini denetler; canlı sunucu ayrıca doğrulandı."
+  ]
+}

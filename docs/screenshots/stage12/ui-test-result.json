@@ -1,0 +1,40 @@
+{
+  "auditStage": 12,
+  "status": "passed",
+  "checks": 100,
+  "javascriptErrors": [],
+  "expectedHttp": [
+    {
+      "path": "/giris",
+      "status": 401
+    },
+    {
+      "path": "/uyeler",
+      "status": 403
+    }
+  ],
+  "browserVersion": "157.0.8103.78",
+  "finishedAt": "2026-11-17T21:49:07.818Z",
+  "viewports": [
+    1440,
+    768,
+    390
+  ],
+  "integratedWorkflow": [
+    "borrow",
+    "reserve",
+    "return",
+    "private_notification",
+    "mark_read",
+    "cancel",
+    "stored_xss"
+  ],
+  "screenshots": [
+    "giris.png",
+    "giris-hatasi.png",
+    "dashboard-acik.png",
+    "dashboard-koyu.png",
+    "tasarim-kaliplari.png",
+    "dashboard-mobil.png"
+  ]
+}

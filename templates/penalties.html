@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Cezalar{% endblock %}
+{% block content %}
+<div class="page-heading"><h1>{{ 'Cezalar' if g.user.role == 'admin' else 'Cezalarım' }}</h1></div>
+<section class="panel table-scroll">
+{% if items %}<table><thead><tr><th>Kitap</th><th>İade tarihi</th>{% if g.user.role == 'admin' %}<th>Üye</th>{% endif %}<th>Ceza</th></tr></thead><tbody>
+{% for item in items %}<tr><td>{{ item.title }}</td><td>{{ item.returned_on }}</td>{% if g.user.role == 'admin' %}<td>{{ item.full_name }}</td>{% endif %}<td>{{ '%.2f'|format(item.penalty_cents / 100) }} TL</td></tr>{% endfor %}
+</tbody></table>{% else %}<p>Kaydedilmiş ceza bulunmuyor.</p>{% endif %}
+</section>
+{% endblock %}

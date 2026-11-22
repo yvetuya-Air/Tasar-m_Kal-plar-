@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}{{ title }}{% endblock %}
+{% block content %}
+<div class="page-heading"><h1>{{ title }}</h1><a class="button secondary-button" href="{{ url_for('books.index') }}">Koleksiyonu aç</a></div>
+{% if suggested is defined %}<div class="form-actions"><a href="{{ url_for('loans.index') }}">Ödünç İşlemlerim</a><a href="{{ url_for('member_portal.history') }}">Okuma Geçmişim</a></div><h2>Ödünç aldığım kitaplar</h2>{% endif %}
+<div class="import-grid">
+  {% for item in items %}<article class="import-card">
+    {% if item.cover_url %}<img class="catalog-cover" src="{{ item.cover_url }}" alt="" width="50" height="72" loading="lazy" referrerpolicy="no-referrer">{% endif %}
+    <div><h2>{{ item.title }}</h2><p>{{ item.author }}</p>
+    {% if item.percent is defined %}<p>{{ item.updated_at }} · %{{ item.percent|int }}</p>{% endif %}
+    {% if item.due_on is defined %}
+    <p>Son teslim · {{ item.due_on }}</p>
+    {% if item.managed_media %}
+      {% if item.position is not none %}<p>{% if item.page_count %}Son sayfa · {{ item.position|int }} / {{ item.page_count }}{% else %}Dinleme konumu · {{ '%.0f'|format(item.position) }} sn{% endif %}</p>{% endif %}
+      <a class="button secondary-button" href="{{ url_for('digital.reader',book_id=item.id) }}">{{ 'Kaldığın yerden devam et' if item.position is not none else 'Okuyucuyu aç' }}</a>
+    {% endif %}
+    {% endif %}
+    {% if list_kind %}<form method="post" action="{{ url_for('member_portal.list_action', book_id=item.id) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="kind" value="{{ list_kind }}">
+    <button class="button secondary-button" name="operation" value="remove">Listeden çıkar</button></form>{% endif %}</div>
+  </article>{% else %}<p class="panel">Henüz kayıt bulunmuyor.</p>{% endfor %}
+</div>
+{% if suggested is defined %}<h2>Size önerilen kitaplar</h2>
+<div class="import-grid">{% for item in suggested %}<article class="import-card">
+{% if item.cover_url %}<img class="catalog-cover" src="{{ item.cover_url }}" alt="" width="50" height="72" loading="lazy" referrerpolicy="no-referrer">{% endif %}
+<div><h3>{{ item.title }}</h3><p>{{ item.author }}</p></div></article>
+{% else %}<p class="panel">Öneriler, kaydettiğiniz kitapların kategorilerine göre oluşur.</p>{% endfor %}</div>{% endif %}
+{% endblock %}

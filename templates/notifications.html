@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Bildirimler · Kütüphane{% endblock %}
+{% block content %}<div class="page-heading"><div><span class="badge">KİŞİSEL BİLDİRİMLERİNİZ</span><h1>Bildirimler</h1><p>{{ unread_notifications }} okunmamış · {{ count }} bildirim</p></div></div>
+<section class="panel no-print">
+  <div class="form-actions">
+  <form action="{{ url_for('notifications.index') }}" method="get" class="search-controls"><label for="notification-kind">Tür</label><select name="kind" id="notification-kind"><option value="">Tümü</option>{% for key,label in events.items() %}<option value="{{ key }}" {% if key==kind %}selected{% endif %}>{{ label }}</option>{% endfor %}</select><button class="button secondary-button" type="submit">Filtrele</button></form>
+  <form action="{{ url_for('notifications.read_all') }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="button secondary-button" type="submit">Tümünü okundu işaretle</button></form>
+  </div>
+  {% if g.user.role == 'member' %}<details><summary>Bildirim tercihleri</summary><form action="{{ url_for('notifications.preferences') }}" method="post">
+   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+   <div class="book-form">{% for key,label in events.items() %}<label><input type="checkbox" name="enabled" value="{{ key }}" {% if key not in disabled %}checked{% endif %}> {{ label }}</label>{% endfor %}</div>
+   <button class="button secondary-button" type="submit">Tercihleri kaydet</button>
+  </form></details>{% endif %}
+</section>
+<div class="notification-list">{% for row in rows %}<article class="notification-card {{ 'is-unread' if not row.is_read else '' }}"><div><span class="badge">{{ 'Okundu' if row.is_read else 'Yeni bildirim' }}</span>{% if row.kind %}<span class="type-pill">{{ events.get(row.kind,row.kind) }}</span>{% endif %}<p>{{ row.message }}</p><time datetime="{{ row.created_at|replace(' ','T') }}Z">{{ row.created_at }} UTC</time></div>{% if not row.is_read %}<form method="post" action="{{ url_for('notifications.read',notification_id=row.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="button secondary-button" type="submit">Okundu işaretle</button></form>{% endif %}</article>{% else %}<section class="panel empty-state"><h2>Henüz bildiriminiz yok</h2><p>Rezervasyon yaptığınız kitap mevcut olduğunda bildirimleriniz burada görünür.</p></section>{% endfor %}</div>
+{% if pages>1 %}<nav class="pagination" aria-label="Bildirim sayfaları">{% if page>1 %}<a href="{{ url_for('notifications.index',page=page-1,kind=kind) }}">← Önceki</a>{% endif %}<span>{{ page }} / {{ pages }}</span>{% if page<pages %}<a href="{{ url_for('notifications.index',page=page+1,kind=kind) }}">Sonraki →</a>{% endif %}</nav>{% endif %}
+{% endblock %}

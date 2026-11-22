@@ -1,0 +1,223 @@
+[
+  {
+    "endpoint": "static",
+    "path": "/static/<path:filename>",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "endpoint": "auth.login",
+    "path": "/giris",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "auth.logout",
+    "path": "/cikis",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "dashboard.panel",
+    "path": "/panel",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "endpoint": "dashboard.admin",
+    "path": "/yonetim",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "endpoint": "dashboard.account",
+    "path": "/hesabim",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "endpoint": "books.index",
+    "path": "/kitaplar",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "endpoint": "books.add",
+    "path": "/kitaplar/ekle",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "books.edit",
+    "path": "/kitaplar/<int:book_id>/duzenle",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "books.delete",
+    "path": "/kitaplar/<int:book_id>/sil",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "google_books.search",
+    "path": "/kitaplar/google",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "google_books.preview",
+    "path": "/kitaplar/google/aktar",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "loans.index",
+    "path": "/odunc",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "endpoint": "loans.borrow",
+    "path": "/odunc/ver",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "loans.return_book",
+    "path": "/odunc/<int:loan_id>/iade",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "loans.simulator",
+    "path": "/odunc/simulator",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "reservations.index",
+    "path": "/rezervasyonlar",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "endpoint": "reservations.add",
+    "path": "/rezervasyonlar/ekle",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "reservations.cancel",
+    "path": "/rezervasyonlar/<int:reservation_id>/iptal",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "notifications.index",
+    "path": "/bildirimler",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "endpoint": "notifications.read",
+    "path": "/bildirimler/<int:notification_id>/oku",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "members.index",
+    "path": "/uyeler",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "endpoint": "members.add",
+    "path": "/uyeler/ekle",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "members.edit",
+    "path": "/uyeler/<int:member_id>/duzenle",
+    "methods": [
+      "GET",
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "members.status",
+    "path": "/uyeler/<int:member_id>/durum",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "members.history",
+    "path": "/uyeler/<int:member_id>",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "endpoint": "settings.index",
+    "path": "/ayarlar",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "endpoint": "design_patterns.index",
+    "path": "/tasarim-kaliplari",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "endpoint": "design_patterns.demo",
+    "path": "/tasarim-kaliplari/<pattern_id>/dene",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "endpoint": "index",
+    "path": "/",
+    "methods": [
+      "GET"
+    ]
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "executed_at": "2026-11-17T21:33:27.612Z",
+  "status": "failed",
+  "diagrams": [
+    {
+      "name": "factory",
+      "status": "failed",
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(dimensions.nodes > 0)\n"
+    },
+    {
+      "name": "adapter",
+      "status": "failed",
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(dimensions.nodes > 0)\n"
+    },
+    {
+      "name": "strategy",
+      "status": "failed",
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(dimensions.nodes > 0)\n"
+    },
+    {
+      "name": "observer",
+      "status": "failed",
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(dimensions.nodes > 0)\n"
+    },
+    {
+      "name": "er",
+      "status": "failed",
+      "error": "The expression evaluated to a falsy value:\n\n  assert.ok(dimensions.nodes > 0)\n"
+    }
+  ]
+}

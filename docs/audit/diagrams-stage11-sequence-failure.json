@@ -1,0 +1,47 @@
+{
+  "executed_at": "2026-11-17T21:33:54.580Z",
+  "status": "failed",
+  "diagrams": [
+    {
+      "name": "factory",
+      "status": "passed",
+      "viewBox": "4 4 708.75 1038",
+      "labels": 32
+    },
+    {
+      "name": "adapter",
+      "status": "passed",
+      "viewBox": "4 4 481.0703125 796",
+      "labels": 23
+    },
+    {
+      "name": "strategy",
+      "status": "passed",
+      "viewBox": "4 4 806.15625 634",
+      "labels": 15
+    },
+    {
+      "name": "observer",
+      "status": "passed",
+      "viewBox": "4 4 524.5341796875 1174",
+      "labels": 24
+    },
+    {
+      "name": "er",
+      "status": "passed",
+      "viewBox": "4 4 857.9967651367188 1792.5",
+      "labels": 213
+    },
+    {
+      "name": "architecture-1",
+      "status": "passed",
+      "viewBox": "4 4 613.6015625 916.148681640625",
+      "labels": 11
+    },
+    {
+      "name": "architecture-2",
+      "status": "failed",
+      "error": "page.evaluate: Error: Parse error on line 22:\n... hata varsa ROLLBACK    R-->>Y: İade ge\n-----------------------^\nExpecting '()', 'SOLID_OPEN_ARROW', 'DOTTED_OPEN_ARROW', 'SOLID_ARROW', 'SOLID_ARROW_TOP', 'SOLID_ARROW_BOTTOM', 'STICK_ARROW_TOP', 'STICK_ARROW_BOTTOM', 'SOLID_ARROW_TOP_DOTTED', 'SOLID_ARROW_BOTTOM_DOTTED', 'STICK_ARROW_TOP_DOTTED', 'STICK_ARROW_BOTTOM_DOTTED', 'SOLID_ARROW_TOP_REVERSE', 'SOLID_ARROW_BOTTOM_REVERSE', 'STICK_ARROW_TOP_REVERSE', 'STICK_ARROW_BOTTOM_REVERSE', 'SOLID_ARROW_TOP_REVERSE_DOTTED', 'SOLID_ARROW_BOTTOM_REVERSE_DOTTED', 'STICK_ARROW_TOP_REVERSE_DOTTED', 'STICK_ARROW_BOTTOM_REVERSE_DOTTED', 'BIDIRECTIONAL_SOLID_ARROW', 'DOTTED_ARROW', 'BIDIRECTIONAL_DOTTED_ARROW', 'SOLID_CROSS', 'DOTTED_CROSS', 'SOLID_POINT', 'DOTTED_POINT', got 'NEWLINE'\n    at Parser.parseError (http://diagram.local/chunks/mermaid.esm.min/sequenceDiagram-7K4MKO6P.mjs:1:19372)\n    at Parser.parse (http://diagram.local/chunks/mermaid.esm.min/sequenceDiagram-7K4MKO6P.mjs:3:179)\n    at Diagram.fromText (http://diagram.local/mermaid.esm.min.mjs:3:97)\n    at async Object.parse (http://diagram.local/mermaid.esm.min.mjs:6:1567)"
+    }
+  ]
+}

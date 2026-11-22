@@ -1,0 +1,2817 @@
+{
+  "executed_at": "2026-11-18T00:57:40.394359+03:00",
+  "status": "passed",
+  "checks": {
+    "candidate_files_allowed": true,
+    "no_detected_secrets": true,
+    "pytest": true,
+    "browser": true,
+    "clean_install_setup": true,
+    "documentation_links": true,
+    "mermaid_diagrams": true,
+    "git_export_install": true
+  },
+  "candidate_files": 174,
+  "forbidden_files": [],
+  "detected_secret_files": [],
+  "pytest": {
+    "passed": 374,
+    "failed": 0,
+    "error": 0,
+    "skipped": 0,
+    "total": 374,
+    "suite_seconds": 277.394
+  },
+  "browser_checks": 100,
+  "google_books_status": "blocked_external",
+  "release_tag_ready": false,
+  "limits": [
+    "Fiziksel telefon, ekran okuyucu ve Firefox/Safari denemeleri yürütülmedi.",
+    "Yeni kurulum aynı Windows makinesinde temiz ortamda doğrulandı; ikinci fiziksel bilgisayar denenmedi.",
+    "Gizli değer taraması kapsamlı bir güvenlik sertifikası değildir."
+  ],
+  "source_inventory": [
+    {
+      "file": "app.py",
+      "sha256": "805e77e960304554c108367e7c42f77204803bb14beb5f34daba02a9e9a8efb7",
+      "classes": []
+    },
+    {
+      "file": "config.py",
+      "sha256": "4d34cff57056293de6550f47b985ede987020cc1955959868163320be34dc435",
+      "classes": [
+        "Config"
+      ]
+    },
+    {
+      "file": "database.py",
+      "sha256": "55a9d1748734dc73bb1bc0b0dca57157698340ad1c39c822a1ce322c82c223bc",
+      "classes": []
+    },
+    {
+      "file": "models/__init__.py",
+      "sha256": "aedf7c48710e539667e092176dfc206921f9387c5068f030c20b084377db2abf",
+      "classes": []
+    },
+    {
+      "file": "models/activity_log.py",
+      "sha256": "c5f4593f3e2374465f117ee26f5f90f9e6039c6b9384cc86c4884ae7792dfe16",
+      "classes": [
+        "ActivityLog"
+      ]
+    },
+    {
+      "file": "models/base.py",
+      "sha256": "1c0e31713af11b8904de7bc9565f5c84fcfe48d98403e6b60dde2b68183e96ac",
+      "classes": [
+        "RowModel"
+      ]
+    },
+    {
+      "file": "models/book.py",
+      "sha256": "4c85956b2f0b55920fef3dcbd7784ac4eac97d65757aabd0b3642bb740936ea9",
+      "classes": [
+        "Book",
+        "PhysicalBook",
+        "EBook"
+      ]
+    },
+    {
+      "file": "models/category.py",
+      "sha256": "a91731da711c4add6b3d7f0c558dc74513362b4091f350f0a0777d811ab881e1",
+      "classes": [
+        "Category"
+      ]
+    },
+    {
+      "file": "models/isbn.py",
+      "sha256": "999b265666e80d9c92ea95e8d89b950daeee099db18b3d4e5b258fd69ee31d9f",
+      "classes": []
+    },
+    {
+      "file": "models/loan.py",
+      "sha256": "87f3f6e8c3aee463ef2156567a12d703fbb843c5b4354dfadc568017b3ed034c",
+      "classes": [
+        "Loan"
+      ]
+    },
+    {
+      "file": "models/member.py",
+      "sha256": "de8c1909304754856a69f0a2dbd7fdcf05f29a1c7d67e1c34314ab6d9e671968",
+      "classes": [
+        "Member"
+      ]
+    },
+    {
+      "file": "models/notification.py",
+      "sha256": "f0d8df14e58b032d88cda0840c60cd3f30ecc897fbd0d2037612619c2bc64ee7",
+      "classes": [
+        "Notification"
+      ]
+    },
+    {
+      "file": "models/reservation.py",
+      "sha256": "d83df39186dcfbf80b64c6c4950d5f89731db71c767ccd7461eee1d296e5f068",
+      "classes": [
+        "Reservation"
+      ]
+    },
+    {
+      "file": "models/urls.py",
+      "sha256": "f0443f5e64c020ebdb98ecec0fdee7b69c3a69dde09c636a94af4e82374a2e02",
+      "classes": []
+    },
+    {
+      "file": "models/user.py",
+      "sha256": "4fb947a2d38e658a109cf3e99aa79d6968682d6248993702fa46d9d5db6291bd",
+      "classes": [
+        "User"
+      ]
+    },
+    {
+      "file": "patterns/__init__.py",
+      "sha256": "3664db6483cf481e9ab33535ca4d92843c6f750c43b8230a3999f8c5a8475683",
+      "classes": []
+    },
+    {
+      "file": "patterns/adapter.py",
+      "sha256": "e9cecd857dc1040e89bb6bb8a5dafc744de53627b92e2190d67bd5c2be2b4bcd",
+      "classes": [
+        "BookImportData",
+        "BookDataProvider",
+        "GoogleBooksAdapter"
+      ]
+    },
+    {
+      "file": "patterns/factory_method.py",
+      "sha256": "1ac7c74f51d7279df24177f34a94c1f23dd786d90f49de25bbae1dd29194776f",
+      "classes": [
+        "BookCreator",
+        "PhysicalBookCreator",
+        "EBookCreator"
+      ]
+    },
+    {
+      "file": "patterns/observer.py",
+      "sha256": "c0a54d3361e3133c4f5bed323eee66fc76948ce05feb8db74b7c637e006350ad",
+      "classes": [
+        "Observer",
+        "Subject",
+        "BookAvailabilitySubject",
+        "MemberObserver"
+      ]
+    },
+    {
+      "file": "patterns/strategy.py",
+      "sha256": "bb55367d63cb2cd905c698bd7f300f98b1a5344c7873a472fe8808dd1aa33cbc",
+      "classes": [
+        "PenaltyStrategy",
+        "StudentPenalty",
+        "TeacherPenalty",
+        "StandardPenalty",
+        "PenaltyCalculator"
+      ]
+    },
+    {
+      "file": "routes/__init__.py",
+      "sha256": "3664db6483cf481e9ab33535ca4d92843c6f750c43b8230a3999f8c5a8475683",
+      "classes": []
+    },
+    {
+      "file": "routes/auth.py",
+      "sha256": "612afef67469442887b681e88b72f1adaa8aa9d474e895dc7cd1b412cf98ec59",
+      "classes": []
+    },
+    {
+      "file": "routes/books.py",
+      "sha256": "b0fe7c0a078550c2ffb4a502127815f633d151ace78eae0c857ee712e3c85677",
+      "classes": []
+    },
+    {
+      "file": "routes/dashboard.py",
+      "sha256": "2b5fcb4c3c16eaea886240bf9959c516255b7a2bcf9aef21e402ac2fb26c7088",
+      "classes": []
+    },
+    {
+      "file": "routes/design_patterns.py",
+      "sha256": "5faa5b8183253111a29464df52fbb29f8d1a4cf077c725e1c636c11ffcdfa8a2",
+      "classes": [
+        "DemoObserver"
+      ]
+    },
+    {
+      "file": "routes/google_books.py",
+      "sha256": "86ea00a3df8478f933752ec93710832c97eff0eabf10a570e9efd585a591addc",
+      "classes": []
+    },
+    {
+      "file": "routes/loans.py",
+      "sha256": "430984833deb1356f90ccec089419efb33a408f32d55033863d72b8aa1de5575",
+      "classes": []
+    },
+    {
+      "file": "routes/members.py",
+      "sha256": "a865e4b705b0f191a00fa69314883c69887c4aeb302636a8f64fab585096a50a",
+      "classes": []
+    },
+    {
+      "file": "routes/notifications.py",
+      "sha256": "32f3321bdbc6fc5725fbca4beb12e0bf44d2c73609111c172be26d2583f370db",
+      "classes": []
+    },
+    {
+      "file": "routes/reservations.py",
+      "sha256": "d220381a003d3a557e7a2d85d8b77088af4443ae63b7441ff9c1f642670c37be",
+      "classes": []
+    },
+    {
+      "file": "routes/settings.py",
+      "sha256": "eaee95531458d2f451c16301bbeb434cd1681568223c938fee0ca68bbecd8fc2",
+      "classes": []
+    },
+    {
+      "file": "schema.sql",
+      "sha256": "293520d40664a317e39ea9759e783558b0d88f2b4de8c1062de0a107eb5e1fbd"
+    },
+    {
+      "file": "scripts/build_test_report.py",
+      "sha256": "57355ec728cf18a5c7c3be9b11667b2e6e09d5c1862eb76be89f0c7b0068e56f",
+      "classes": []
+    },
+    {
+      "file": "scripts/check_doc_diagrams.cjs",
+      "sha256": "150c2e412d3504336fb419fa9be81f5c2f413e343b2a4fa3fa3244e2190b08ee"
+    },
+    {
+      "file": "scripts/check_docs.py",
+      "sha256": "b38ed135509a1b70f24047ec08e45c8bd71627db3892cd64af5bda0c9a115819",
+      "classes": []
+    },
+    {
+      "file": "scripts/check_documented_setup.py",
+      "sha256": "b12e07a5a9734316fd8f13daecf11ae43c7824e230369f2643ec740ce66db5af",
+      "classes": []
+    },
+    {
+      "file": "scripts/check_persistence.py",
+      "sha256": "2a261d14856ba7b56cab532bed401d20e12433f725e8f92a5101af26689a7ede",
+      "classes": []
+    },
+    {
+      "file": "scripts/check_release.py",
+      "sha256": "cd2a44d7b3e11e8bed01189ebc4ee00ceefc0f2320d3a30673382a7d081e5311",
+      "classes": []
+    },
+    {
+      "file": "scripts/check_ui.cjs",
+      "sha256": "ffaca9f4665593e9b9761da1798468b7c156e6d6b161bf86283ddf5970af2280"
+    },
+    {
+      "file": "scripts/generate_uml.py",
+      "sha256": "2e18320e967ccd92149f3e1c26b40c8ce9ebc6b775f033ad0211eea1a8bfffd2",
+      "classes": []
+    },
+    {
+      "file": "scripts/sanitize_junit.py",
+      "sha256": "9f7b95bdf7f1fe3cca994dcee8e18daecacd9cff3eeb798230b2af5647d93fb3",
+      "classes": []
+    },
+    {
+      "file": "scripts/sync_doc_sources.py",
+      "sha256": "6993b3030892774811542a25138e6d1f35adeaecdc697411d650344d591230e4",
+      "classes": []
+    },
+    {
+      "file": "scripts/ui_preview.py",
+      "sha256": "7a40acab1346b5cc2913c4629a3d72fa1c2c6e86307578966dcc2a73ad77ef22",
+      "classes": []
+    },
+    {
+      "file": "security.py",
+      "sha256": "bdafa2f21d26ae5c476afe019e1584f5e9a889116546bcf251aa23669969e89c",
+      "classes": [
+        "RecordIDConverter"
+      ]
+    },
+    {
+      "file": "seed.py",
+      "sha256": "9e7c407e74bf4b69ab3716f4d9f525763a94c510ec92d25ace192b29ea0bc315",
+      "classes": []
+    },
+    {
+      "file": "services/__init__.py",
+      "sha256": "3664db6483cf481e9ab33535ca4d92843c6f750c43b8230a3999f8c5a8475683",
+      "classes": []
+    },
+    {
+      "file": "services/auth_service.py",
+      "sha256": "2d33758c285eef249fc564448708df10cb08aac9f64bb15bd8ab9cba7029d187",
+      "classes": []
+    },
+    {
+      "file": "services/book_service.py",
+      "sha256": "ce57b5a2284257b0adc3d28b0eb71cd9bcc0816ea90c7e38006ebb13ec04dce6",
+      "classes": [
+        "BookValidationError"
+      ]
+    },
+    {
+      "file": "services/dashboard_service.py",
+      "sha256": "ea15fb1da2fc8997743775695acc755eb800cbba63aa165bcc5a1e1ba90e1088",
+      "classes": []
+    },
+    {
+      "file": "services/demo_accounts.py",
+      "sha256": "9af04c6c0d445059d8c5f0948f4e1cf5aaf973989ae68cd3bf15a423bdd8f8e0",
+      "classes": []
+    },
+    {
+      "file": "services/google_books_api.py",
+      "sha256": "1f4d229e92a1b0cbd0d24db21d2a11ac99078544321cfb2faf6de29c5a54d63e",
+      "classes": [
+        "BookProviderError",
+        "GoogleBooksAPI"
+      ]
+    },
+    {
+      "file": "services/loan_service.py",
+      "sha256": "da5d20b108560302a06d71ae8bc443c89ec71e870dc6d8310c7ee5dab107a9d8",
+      "classes": [
+        "LoanValidationError"
+      ]
+    },
+    {
+      "file": "services/member_service.py",
+      "sha256": "a56675b22a4884e7884ade81b9f57f1569fb945737f026bbc48beb7dc8490691",
+      "classes": [
+        "MemberValidationError"
+      ]
+    },
+    {
+      "file": "services/notification_service.py",
+      "sha256": "038d3050a0acccc7322c8015a9da53c3eff59bcd149465b0b89024a66108f1a3",
+      "classes": [
+        "NotificationService"
+      ]
+    },
+    {
+      "file": "services/reservation_service.py",
+      "sha256": "e164a21aa6e1290414d438590957cb2f01906c672cc778bfe6bba8410b546d1d",
+      "classes": [
+        "ReservationValidationError"
+      ]
+    },
+    {
+      "file": "services/validation.py",
+      "sha256": "f5c5823d63344e036e27cefa4e8dfc8b4da14d754a9a7fb44ad4984b6f9b6ce1",
+      "classes": []
+    },
+    {
+      "file": "static/css/no-script.css",
+      "sha256": "9266ede9b837ae866aa799538d358ee8ededf920999ca7b2f119c48dcb2f4125"
+    },
+    {
+      "file": "static/css/style.css",
+      "sha256": "a5acfb98b29c808bb917f4fabea29d263411347997137f38a3b24875b644e141"
+    },
+    {
+      "file": "static/js/books.js",
+      "sha256": "bb0a095c9705db94618425c750fead2abffa5e88e70ac6810e5caf463a3eedd4"
+    },
+    {
+      "file": "static/js/theme.js",
+      "sha256": "e1deb91bc1bfd1ccb3b138d28a1fe661f110c72f0427becfc3d818226e575568"
+    },
+    {
+      "file": "static/js/ui.js",
+      "sha256": "3e4adc141028b8f7e49f44ed4118f4fbebb533d0f26e6d303fcd8a5ec7e62a75"
+    },
+    {
+      "file": "templates/_icons.html",
+      "sha256": "96ae5162c59c1c24a9fb5bb9f5d20f827cf9968df5933e468c695de11209b1c9"
+    },
+    {
+      "file": "templates/base.html",
+      "sha256": "0b084e623cc2dca23656a3781ae452eac7ef1bb1147d2dbc59113244e0018bf6"
+    },
+    {
+      "file": "templates/book_delete.html",
+      "sha256": "1dccfccd043b30b13044d7853d0d12c3f7d1f800a034647097d880d6f7574b12"
+    },
+    {
+      "file": "templates/book_form.html",
+      "sha256": "bad890f55643cc6efa2f7af0c423686098080e2846fa6e9f225b8d4d0271b763"
+    },
+    {
+      "file": "templates/books.html",
+      "sha256": "6a1064f4ef6e2ddd7babafe21a3a60237f241be81c826d5cc5a58176e7bb332c"
+    },
+    {
+      "file": "templates/dashboard.html",
+      "sha256": "dd1431e3482c4092296a6debe68026279217d3fc350d41fcb9f23608840fec3f"
+    },
+    {
+      "file": "templates/design_patterns.html",
+      "sha256": "aa7a15ca07f3d6257e581c8a1626637d09989edd97179b52f80486b5c4249ffd"
+    },
+    {
+      "file": "templates/error.html",
+      "sha256": "499af3abc24e179e75f550c7894307e9f3c47ce4d134486e21d57b9d96e1fcec"
+    },
+    {
+      "file": "templates/google_books.html",
+      "sha256": "b6f101adeb44c2d7ac735fa7161a546446a8a077e64ef38eb650e6962e869498"
+    },
+    {
+      "file": "templates/loan_form.html",
+      "sha256": "e661b388a85a8da83b4a4b68e8019b4ae49e43c59f4faef0a8f63b9492701089"
+    },
+    {
+      "file": "templates/loan_return.html",
+      "sha256": "8e598516f6854736a186b02988b020b385e68d34f9bb2095ceac3ecf3663931d"
+    },
+    {
+      "file": "templates/loans.html",
+      "sha256": "c0256172bb8dc35fed06a96ab4342d0cdb46ab7ec0ebf635e424dfe2cc94c5b1"
+    },
+    {
+      "file": "templates/login.html",
+      "sha256": "ce2006f1ed70581a63eedfefe55f109b7d02c83d436588b81f60da1c1870a5cc"
+    },
+    {
+      "file": "templates/member_form.html",
+      "sha256": "c75f452d0e9417f7c0c4ec88fa7638863448ca81e285b9296a34f8fa7a043ab2"
+    },
+    {
+      "file": "templates/member_history.html",
+      "sha256": "02eb5cf1d7e50aa9b24a4634a89af067c0326fa36a9791e9f0ea0915ef069424"
+    },
+    {
+      "file": "templates/members.html",
+      "sha256": "e7dedab4f529cdb679d0402294618a5d7b0b4587b5b3a767b11f654675d2bb4c"
+    },
+    {
+      "file": "templates/notifications.html",
+      "sha256": "f6fe4039f4cca29e4864fd6b6501e1cd8a09b9b2e5c3b647cde274c93e206716"
+    },
+    {
+      "file": "templates/overview.html",
+      "sha256": "8f17a4a21ac90dce121ca1fb42368cee022b70c478cb6ca6885d64f35a8f042f"
+    },
+    {
+      "file": "templates/panel.html",
+      "sha256": "695cfc94ff26095e9ac574b3230af4032d90be33bca69ced9983502963694d22"
+    },
+    {
+      "file": "templates/penalty_simulator.html",
+      "sha256": "cf90a2f806bf309f349411abcb19e035dbcf6eb7375dfe2d01f536c178fd3a5b"
+    },
+    {
+      "file": "templates/reservation_conflict.html",
+      "sha256": "ed28ddd4acc8e5145d016a921b2907c91ad8bfca87248419a357b66f4487cb67"
+    },
+    {
+      "file": "templates/reservation_form.html",
+      "sha256": "427e9128e47285652425cd41f5a7feb6a78ce31ce70e3a32e137d1c4184542fc"
+    },
+    {
+      "file": "templates/reservations.html",
+      "sha256": "35a4cd816247f0e153ff7d6e16c0e80681f50c22dd581c5470a3e80564754650"
+    },
+    {
+      "file": "templates/settings.html",
+      "sha256": "2f684186cefe83016ce76d95d76bed4bd3450276187fe8fd5b31a46166404cc7"
+    },
+    {
+      "file": "tests/conftest.py",
+      "sha256": "ee88a3e2ccbcd441cd40cc8d0ace3d2d793ebf45e4c3df39f8fdd5d34c24cc51",
+      "classes": []
+    },
+    {
+      "file": "tests/test_adapter.py",
+      "sha256": "49c4459333e2bd03d6f8d199019f5068260f250eff4571390040dde5531c6630",
+      "classes": [
+        "TrackingCreator"
+      ]
+    },
+    {
+      "file": "tests/test_app.py",
+      "sha256": "934f20e1bc0248816b0e670145b7f21d8f76e3f3b0ccf74e25c39621e58b7b0f",
+      "classes": []
+    },
+    {
+      "file": "tests/test_auth.py",
+      "sha256": "95f3d3362e4f0b34c7e9ea20e8699f509f903344c36b65507416dfddf1f39ea3",
+      "classes": []
+    },
+    {
+      "file": "tests/test_books.py",
+      "sha256": "05c94b3e9fa098fc4fcd797d223d6448ad79c1a32e7281daeae8d4a2933f2ea6",
+      "classes": [
+        "TrackingCreator"
+      ]
+    },
+    {
+      "file": "tests/test_database.py",
+      "sha256": "72a5288f1e72abc9229a340938f08ddd2155b17206d251076990a0532e20f90d",
+      "classes": []
+    },
+    {
+      "file": "tests/test_factory.py",
+      "sha256": "038ae018b102f396f3ddf7de3704100fad34fd08bd37c4d0888210b8091aae59",
+      "classes": [
+        "RecordingCreator"
+      ]
+    },
+    {
+      "file": "tests/test_frontend.py",
+      "sha256": "f2341113a315c8d481317441094a4fec33aec472021fb328e4038ac3a5eb56c5",
+      "classes": []
+    },
+    {
+      "file": "tests/test_integration.py",
+      "sha256": "04b38ec8baf4bd9efb85c93071bfdb6feb8967526550f41c88e2f2bb766b9ad3",
+      "classes": [
+        "PageParser"
+      ]
+    },
+    {
+      "file": "tests/test_loans.py",
+      "sha256": "87979668e8c433dee007da71be34de7311a16999b04dabda453f8c4206bc14ab",
+      "classes": [
+        "TestPenalty"
+      ]
+    },
+    {
+      "file": "tests/test_observer.py",
+      "sha256": "efbb4315757886aa39f8841dfab839893df480b5a89191e1e8217a4a7589801d",
+      "classes": [
+        "RecordingObserver",
+        "DetachingObserver"
+      ]
+    },
+    {
+      "file": "tests/test_reservations.py",
+      "sha256": "370ead4a1475308e255d011e5b8ee3394666405036f98aea7dde19c7bca42a8b",
+      "classes": []
+    },
+    {
+      "file": "tests/test_security.py",
+      "sha256": "941713a4b09e12a83d3cb664b12b3b45cb4981a218b813b8bcf159bfd0141d95",
+      "classes": []
+    },
+    {
+      "file": "tests/test_strategy.py",
+      "sha256": "a98c5a36afe38370cbaeb1cd7527adc47c377886ba1aa9750e432f406bc551e6",
+      "classes": [
+        "FreePenalty"
+      ]
+    }
+  ],
+  "test_cases": [
+    {
+      "module": "tests.test_adapter",
+      "name": "test_provider_is_abstract",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_external_data_converted_to_internal_fields",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_missing_and_wrong_typed_metadata[None]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_missing_and_wrong_typed_metadata[info1]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_missing_and_wrong_typed_metadata[invalid]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_missing_and_wrong_typed_metadata[info3]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_missing_and_wrong_typed_metadata[info4]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_isbn10_fallback",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_cover_url_restrictions[None]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_cover_url_restrictions[42]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_cover_url_restrictions[javascript:alert(1)]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_cover_url_restrictions[https://evil.invalid/x]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_cover_url_restrictions[https://books.google.com.evil.invalid/x]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_cover_url_restrictions[https://user:pass@books.google.com/x]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_cover_url_restrictions[https://books.google.com:443/x]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_cover_url_restrictions[https://[bad]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_cover_url_restrictions[https://books.google.com/a b]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_search_title_author_isbn_query",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_search_validation[kwargs0]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_search_validation[kwargs1]",
+      "seconds": 0.003,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_search_validation[kwargs2]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_invalid_result_list[payload0]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_invalid_result_list[payload1]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_invalid_result_list[payload2]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_invalid_result_list[payload3]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_invalid_result_list[payload4]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_empty_and_partially_valid_results",
+      "seconds": 0.003,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_get_volume_identity_mismatch",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_http_parameters_timeout_and_optional_key",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_connection_errors_do_not_expose_details[exception0-timeout]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_connection_errors_do_not_expose_details[exception1-connection]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_http_errors[429-payload0-quota]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_http_errors[403-payload1-quota]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_http_errors[403-payload2-access]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_http_errors[401-payload3-access]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_http_errors[404-payload4-not_found]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_http_errors[503-payload5-unavailable]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_http_errors[302-payload6-unavailable]",
+      "seconds": 0.003,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_http_errors[200-payload7-invalid_response]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_http_errors[200-payload8-invalid_response]",
+      "seconds": 0.003,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_non_json_response",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_invalid_ids_never_reach_network[]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_invalid_ids_never_reach_network[../secret]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_invalid_ids_never_reach_network[https://evil.invalid]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_invalid_ids_never_reach_network[source_id3]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_search_preview_edit_factory_and_sqlite",
+      "seconds": 1.034,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_import_as_ebook_and_equivalent_isbn_duplicate",
+      "seconds": 1.03,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_permissions_and_csrf[/kitaplar/google]",
+      "seconds": 1.873,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_permissions_and_csrf[/kitaplar/google/aktar]",
+      "seconds": 2.046,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_api_failure_ui_no_database_write",
+      "seconds": 1.489,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_missing_fields_preview_and_server_validation",
+      "seconds": 1.272,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_initial_search_does_not_call_api",
+      "seconds": 1.488,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_empty_search_and_invalid_selection_do_not_call_api",
+      "seconds": 1.461,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_adapter",
+      "name": "test_external_html_is_escaped",
+      "seconds": 1.459,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_app",
+      "name": "test_home_page",
+      "seconds": 0.067,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_app",
+      "name": "test_test_config_is_applied",
+      "seconds": 0.035,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_app",
+      "name": "test_unknown_page_returns_404",
+      "seconds": 0.082,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_login_roles[demo_yonetici-DemoYonetici!2026-/yonetim-/hesabim]",
+      "seconds": 1.49,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_login_roles[demo_uye-DemoUye!2026-/hesabim-/yonetim]",
+      "seconds": 1.496,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_invalid_login[demo_yonetici-wrong]",
+      "seconds": 1.508,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_invalid_login[missing-wrong]",
+      "seconds": 1.372,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_invalid_login[-]",
+      "seconds": 1.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_invalid_login[' OR 1=1 ---wrong]",
+      "seconds": 1.483,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_invalid_login[demo_uye-DemoYonetici!2026]",
+      "seconds": 1.507,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_anonymous_private_routes[/panel]",
+      "seconds": 0.928,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_anonymous_private_routes[/yonetim]",
+      "seconds": 0.999,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_anonymous_private_routes[/hesabim]",
+      "seconds": 1.109,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_login_csrf[None]",
+      "seconds": 0.995,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_login_csrf[wrong]",
+      "seconds": 0.98,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_csrf_bound_to_browser",
+      "seconds": 0.94,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_logout",
+      "seconds": 1.049,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_login_clears_session_and_rotates_csrf",
+      "seconds": 0.94,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_disabled_accounts[users]",
+      "seconds": 1.036,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_disabled_accounts[members]",
+      "seconds": 0.922,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_disable_during_session",
+      "seconds": 0.992,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_role_change_is_immediate",
+      "seconds": 0.861,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_member_sees_only_own_profile",
+      "seconds": 1.195,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_demo_hashes_and_repeat_safety",
+      "seconds": 1.009,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_demo_refuses_unmarked_database",
+      "seconds": 0.037,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_demo_cli",
+      "seconds": 0.705,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_security_headers_and_cookie",
+      "seconds": 0.708,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_secure_cookie_setting",
+      "seconds": 0.643,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_expired_session",
+      "seconds": 0.927,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_forged_session",
+      "seconds": 0.65,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_safe_redirect_and_escaping",
+      "seconds": 1.067,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_auth",
+      "name": "test_error_escapes_username",
+      "seconds": 0.97,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_create_edit_search_delete_lifecycle",
+      "seconds": 0.962,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_ebook_creation_and_safe_type_change",
+      "seconds": 1.096,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_service_really_calls_factory_method",
+      "seconds": 0.67,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes0]",
+      "seconds": 1.059,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes1]",
+      "seconds": 0.876,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes2]",
+      "seconds": 0.891,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes3]",
+      "seconds": 0.961,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes4]",
+      "seconds": 0.973,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes5]",
+      "seconds": 0.91,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes6]",
+      "seconds": 0.913,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes7]",
+      "seconds": 0.948,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes8]",
+      "seconds": 0.927,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes9]",
+      "seconds": 1.01,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes10]",
+      "seconds": 0.954,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes11]",
+      "seconds": 1.063,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes12]",
+      "seconds": 0.974,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes13]",
+      "seconds": 0.916,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes14]",
+      "seconds": 0.918,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes15]",
+      "seconds": 0.963,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes16]",
+      "seconds": 0.91,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_server_validation_rolls_back[changes17]",
+      "seconds": 0.998,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_duplicate_isbn",
+      "seconds": 0.965,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_history_prevents_delete_and_type_change[1]",
+      "seconds": 0.869,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_history_prevents_delete_and_type_change[2]",
+      "seconds": 0.992,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_stock_reduction_rejected",
+      "seconds": 0.952,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_member_cannot_mutate[/kitaplar/ekle]",
+      "seconds": 0.99,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_member_cannot_mutate[/kitaplar/1/duzenle]",
+      "seconds": 0.828,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_member_cannot_mutate[/kitaplar/1/sil]",
+      "seconds": 1.173,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_anonymous_cannot_access[/kitaplar]",
+      "seconds": 0.86,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_anonymous_cannot_access[/kitaplar/ekle]",
+      "seconds": 0.831,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_anonymous_cannot_access[/kitaplar/1/duzenle]",
+      "seconds": 0.838,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_anonymous_cannot_access[/kitaplar/1/sil]",
+      "seconds": 0.899,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_csrf_required[/kitaplar/ekle]",
+      "seconds": 1.345,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_csrf_required[/kitaplar/1/duzenle]",
+      "seconds": 1.339,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_csrf_required[/kitaplar/1/sil]",
+      "seconds": 1.579,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_missing_book[/kitaplar/999/duzenle]",
+      "seconds": 1.424,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_missing_book[/kitaplar/999/sil]",
+      "seconds": 1.006,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_turkish_search_and_literal_wildcards",
+      "seconds": 1.07,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_pagination",
+      "seconds": 1.052,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_books",
+      "name": "test_isbn10_and_xss_escaping",
+      "seconds": 0.967,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_schema_and_integrity",
+      "seconds": 0.264,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_model_mapping[books-Book]",
+      "seconds": 0.219,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_model_mapping[members-Member]",
+      "seconds": 0.266,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_model_mapping[loans-Loan]",
+      "seconds": 0.26,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_model_mapping[reservations-Reservation]",
+      "seconds": 0.309,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_model_mapping[notifications-Notification]",
+      "seconds": 0.243,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_model_mapping[users-User]",
+      "seconds": 0.242,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_model_mapping[categories-Category]",
+      "seconds": 0.282,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_model_mapping[activity_logs-ActivityLog]",
+      "seconds": 0.278,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_init_and_seed_repeat_without_changes",
+      "seconds": 0.266,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_seed_refuses_nonempty_database",
+      "seconds": 0.043,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[INSERT INTO loans(book_id,member_id,borrowed_on,due_on) VALUES(1,2,'2026-11-01','2026-11-20')]",
+      "seconds": 0.301,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[INSERT INTO loans(book_id,member_id,borrowed_on,due_on) VALUES(999,2,'2026-11-01','2026-11-20')]",
+      "seconds": 0.257,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[INSERT INTO loans(book_id,member_id,borrowed_on,due_on) VALUES(2,2,'2026-11-20','2026-11-01')]",
+      "seconds": 0.245,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[INSERT INTO loans(book_id,member_id,borrowed_on,due_on) VALUES(2,2,'yanl\\u0131\\u015f','2026-11-20')]",
+      "seconds": 0.228,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[UPDATE loans SET returned_on='2026-11-17' WHERE id=2]",
+      "seconds": 0.289,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[UPDATE loans SET book_id=2 WHERE id=1]",
+      "seconds": 0.23,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[DELETE FROM loans WHERE id=1]",
+      "seconds": 0.261,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[DELETE FROM books WHERE id=1]",
+      "seconds": 0.251,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[DELETE FROM members WHERE id=1]",
+      "seconds": 0.39,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[INSERT INTO reservations(book_id,member_id) VALUES(2,2)]",
+      "seconds": 0.255,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[INSERT INTO reservations(book_id,member_id) VALUES(1,2)]",
+      "seconds": 0.239,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[UPDATE loans SET penalty_cents=-1 WHERE id=1]",
+      "seconds": 0.247,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[UPDATE books SET total_copies=0 WHERE id=1]",
+      "seconds": 0.311,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[UPDATE books SET file_url='x' WHERE id=1]",
+      "seconds": 0.243,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[INSERT INTO members(full_name,email,member_type) VALUES('X','x@example.invalid','unknown')]",
+      "seconds": 0.233,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_invalid_data_rejected[INSERT INTO members(full_name,email,member_type) VALUES('X','OGRENCI@example.invalid','student')]",
+      "seconds": 0.214,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_return_updates_derived_stock",
+      "seconds": 0.216,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_inactive_member_cannot_borrow",
+      "seconds": 0.234,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_reduce_stock_below_active_loans",
+      "seconds": 0.25,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_cli_and_connection_cleanup",
+      "seconds": 0.356,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_database",
+      "name": "test_persistence",
+      "seconds": 0.252,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_abstract_classes_cannot_be_instantiated",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_physical_creator_product",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_ebook_creator_product",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_physical_details[None-None]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_physical_details[   -None]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_physical_details[A-https://example.invalid]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_physical_details[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-None]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_ebook_url_validation[]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_ebook_url_validation[javascript:alert(1)]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_ebook_url_validation[file:///etc/passwd]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_ebook_url_validation[https://]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_ebook_url_validation[https://user:secret@example.invalid/book]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_ebook_url_validation[https://[broken]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_ebook_url_validation[https://example.invalid:99999]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_ebook_url_validation[https://example.invalid/a b]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_factory",
+      "name": "test_creator_template_calls_overridden_factory_method",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_admin_dashboard_matches_sqlite",
+      "seconds": 1.144,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_member_dashboard_scopes_statistics_and_activity",
+      "seconds": 1.284,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_empty_database_has_zero_statistics",
+      "seconds": 0.062,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_all_admin_pages_render_with_shell[/panel]",
+      "seconds": 1.566,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_all_admin_pages_render_with_shell[/kitaplar]",
+      "seconds": 1.13,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_all_admin_pages_render_with_shell[/uyeler]",
+      "seconds": 1.025,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_all_admin_pages_render_with_shell[/odunc]",
+      "seconds": 1.092,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_all_admin_pages_render_with_shell[/rezervasyonlar]",
+      "seconds": 1.214,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_all_admin_pages_render_with_shell[/bildirimler]",
+      "seconds": 1.018,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_all_admin_pages_render_with_shell[/tasarim-kaliplari]",
+      "seconds": 0.942,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_all_admin_pages_render_with_shell[/ayarlar]",
+      "seconds": 1.117,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_member_cannot_access_directory[/uyeler]",
+      "seconds": 1.513,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_member_cannot_access_directory[/uyeler/ekle]",
+      "seconds": 1.351,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_member_cannot_access_directory[/uyeler/1]",
+      "seconds": 1.156,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_member_cannot_access_directory[/uyeler/1/duzenle]",
+      "seconds": 1.045,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_anonymous_new_pages[/uyeler]",
+      "seconds": 0.694,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_anonymous_new_pages[/ayarlar]",
+      "seconds": 1.01,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_anonymous_new_pages[/tasarim-kaliplari]",
+      "seconds": 0.761,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_member_create_edit_status_history",
+      "seconds": 1.087,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_member_validation[changes0]",
+      "seconds": 0.984,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_member_validation[changes1]",
+      "seconds": 0.881,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_member_validation[changes2]",
+      "seconds": 1.018,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_member_validation[changes3]",
+      "seconds": 0.935,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_member_form_csrf_and_authorization",
+      "seconds": 1.378,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_pattern_demos_use_real_classes_without_db_writes[factory-fields0-PhysicalBook]",
+      "seconds": 1.02,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_pattern_demos_use_real_classes_without_db_writes[factory-fields1-EBook]",
+      "seconds": 0.912,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_pattern_demos_use_real_classes_without_db_writes[adapter-fields2-G\\xf6sterim Yazar\\u0131]",
+      "seconds": 0.996,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_pattern_demos_use_real_classes_without_db_writes[strategy-fields3-25,00 TL]",
+      "seconds": 0.965,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_pattern_demos_use_real_classes_without_db_writes[observer-fields4-1 g\\xf6zlemci g\\xfcncellendi]",
+      "seconds": 0.937,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_pattern_demos_use_real_classes_without_db_writes[observer-fields5-2 g\\xf6zlemci g\\xfcncellendi]",
+      "seconds": 0.911,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_demos_csrf_invalid_input_and_source_code",
+      "seconds": 1.232,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_frontend",
+      "name": "test_settings_do_not_expose_secrets",
+      "seconds": 2.231,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_every_flask_route_permissions",
+      "seconds": 2.645,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_rendered_forms_navigation_and_assets[admin]",
+      "seconds": 4.553,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_rendered_forms_navigation_and_assets[member]",
+      "seconds": 3.249,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_malformed_csrf_is_rejected_not_500[\\u0131]",
+      "seconds": 1.469,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_malformed_csrf_is_rejected_not_500[\\U0001f512]",
+      "seconds": 1.412,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_malformed_csrf_is_rejected_not_500[token2]",
+      "seconds": 1.618,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_url_identifiers_outside_sqlite_range[/uyeler/0/duzenle]",
+      "seconds": 1.498,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_url_identifiers_outside_sqlite_range[/kitaplar/0/duzenle]",
+      "seconds": 1.342,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_url_identifiers_outside_sqlite_range[/odunc/0/iade]",
+      "seconds": 1.116,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_url_identifiers_outside_sqlite_range[/uyeler/999999999999999999999999999999]",
+      "seconds": 1.465,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_url_identifiers_outside_sqlite_range[/kitaplar/999999999999999999999999999999/duzenle]",
+      "seconds": 1.452,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_url_identifiers_outside_sqlite_range[path5]",
+      "seconds": 1.443,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_invalid_notification_identifier_with_correct_http_method",
+      "seconds": 1.614,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_form_identifiers_outside_sqlite_range[/kitaplar/ekle-data0]",
+      "seconds": 1.834,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_form_identifiers_outside_sqlite_range[/odunc/ver-data1]",
+      "seconds": 1.634,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_form_identifiers_outside_sqlite_range[/odunc/ver-data2]",
+      "seconds": 1.493,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_form_identifiers_outside_sqlite_range[/rezervasyonlar/ekle-data3]",
+      "seconds": 1.664,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_form_identifiers_outside_sqlite_range[/rezervasyonlar/ekle-data4]",
+      "seconds": 1.792,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_google_preview_error_search_targets_correct_route",
+      "seconds": 1.587,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_large_request_and_database_failure_have_turkish_errors",
+      "seconds": 1.763,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_static_files_remain_available_when_database_is_down",
+      "seconds": 1.201,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_member_zero_update_missing_and_history_preservation",
+      "seconds": 1.539,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_optional_member_account_hash_role_and_deactivation",
+      "seconds": 2.667,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_invalid_member_account_is_atomic_and_password_not_echoed[ab-ValidPassword1]",
+      "seconds": 1.125,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_invalid_member_account_is_atomic_and_password_not_echoed[bad name-ValidPassword1]",
+      "seconds": 0.977,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_invalid_member_account_is_atomic_and_password_not_echoed[valid_name-short]",
+      "seconds": 0.985,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_invalid_member_account_is_atomic_and_password_not_echoed[valid_name-]",
+      "seconds": 1.066,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_invalid_member_account_is_atomic_and_password_not_echoed[-ValidPassword1]",
+      "seconds": 0.898,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_duplicate_account_and_existing_account_edit_are_rejected",
+      "seconds": 1.595,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_link_account_to_member_without_changing_history",
+      "seconds": 1.659,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_member_and_account_creation_roll_back_together",
+      "seconds": 1.536,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_integration",
+      "name": "test_complete_factory_adapter_strategy_observer_workflow_and_restart",
+      "seconds": 4.462,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_borrow_and_return_stock",
+      "seconds": 1.309,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_late_return_uses_member_type_from_db[1-1000]",
+      "seconds": 0.974,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_late_return_uses_member_type_from_db[2-500]",
+      "seconds": 1.06,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_late_return_uses_member_type_from_db[3-2500]",
+      "seconds": 1.248,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_ontime_and_early_return[2026-11-17]",
+      "seconds": 1.104,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_ontime_and_early_return[2026-11-20]",
+      "seconds": 1.071,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_unavailable_book_and_duplicate_active_loan",
+      "seconds": 1.061,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_invalid_borrow[999-1-2026-11-20]",
+      "seconds": 1.064,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_invalid_borrow[2-999-2026-11-20]",
+      "seconds": 0.779,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_invalid_borrow[2-1-bad]",
+      "seconds": 0.612,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_invalid_borrow[2-1-2026-02-30]",
+      "seconds": 0.591,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_invalid_borrow[2-1-2026-11-16]",
+      "seconds": 0.676,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_inactive_member_or_account[members-1]",
+      "seconds": 0.631,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_inactive_member_or_account[users-2]",
+      "seconds": 0.671,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_double_return_does_not_change_stock_or_amount",
+      "seconds": 0.625,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_log_failure_rolls_back_entire_transaction[loan_created]",
+      "seconds": 0.651,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_log_failure_rolls_back_entire_transaction[loan_returned]",
+      "seconds": 0.756,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_current_member_type_and_saved_final_amount",
+      "seconds": 0.716,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_return_really_uses_replaceable_strategy",
+      "seconds": 0.843,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_member_without_profile_has_no_loan_access",
+      "seconds": 0.997,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_concurrent_borrow_last_copy",
+      "seconds": 0.723,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_concurrent_double_return",
+      "seconds": 0.626,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_http_borrow_return_ignores_client_penalty_and_date",
+      "seconds": 0.981,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_member_own_history_only",
+      "seconds": 0.9,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_anonymous_access[/odunc]",
+      "seconds": 0.723,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_anonymous_access[/odunc/ver]",
+      "seconds": 0.689,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_anonymous_access[/odunc/1/iade]",
+      "seconds": 0.655,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_anonymous_access[/odunc/simulator]",
+      "seconds": 0.807,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_csrf[/odunc/ver]",
+      "seconds": 0.956,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_csrf[/odunc/1/iade]",
+      "seconds": 0.869,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_csrf[/odunc/simulator]",
+      "seconds": 0.947,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_overdue_and_final_displays",
+      "seconds": 0.859,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_simulator_is_pure_and_uses_strategies",
+      "seconds": 0.852,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_invalid_simulator[invalid-2026-11-10-2026-11-15]",
+      "seconds": 0.861,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_invalid_simulator[student-bad-2026-11-15]",
+      "seconds": 0.835,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_loans",
+      "name": "test_missing_loan_and_bad_borrow_form",
+      "seconds": 0.997,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_observer",
+      "name": "test_abstract_contracts",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_observer",
+      "name": "test_attach_detach_and_notify",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_observer",
+      "name": "test_member_observer_delegates_to_notification_service",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_observer",
+      "name": "test_notify_uses_snapshot_of_subscribers",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_observer",
+      "name": "test_return_reserved_book_automatically_notifies",
+      "seconds": 0.278,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_observer",
+      "name": "test_repeat_publication_and_unique_database_constraint",
+      "seconds": 0.265,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_observer",
+      "name": "test_no_available_copy_no_notification",
+      "seconds": 0.222,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_observer",
+      "name": "test_cancelled_and_inactive_subscribers_are_skipped",
+      "seconds": 0.309,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_observer",
+      "name": "test_subscribers_loaded_in_chronological_order",
+      "seconds": 0.295,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_observer",
+      "name": "test_notification_failure_rolls_back_return_penalty_stock_and_log",
+      "seconds": 0.284,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_observer",
+      "name": "test_partial_notification_failure_rolls_back_all_subscribers",
+      "seconds": 0.246,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_observer",
+      "name": "test_stock_increase_also_emits_availability_event",
+      "seconds": 0.251,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_observer",
+      "name": "test_publication_requires_caller_transaction",
+      "seconds": 0.296,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_observer",
+      "name": "test_two_concurrent_publications_do_not_duplicate",
+      "seconds": 0.241,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_create_cancel_and_resubscribe",
+      "seconds": 0.842,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_invalid_reservations[2-3]",
+      "seconds": 1.082,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_invalid_reservations[1-2]",
+      "seconds": 1.175,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_invalid_reservations[1-1]",
+      "seconds": 1.314,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_invalid_reservations[999-3]",
+      "seconds": 1.305,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_invalid_reservations[1-999]",
+      "seconds": 1.332,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_inactive_member_and_account",
+      "seconds": 1.426,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_fifo_borrow_fulfills_reservation_and_preserves_stock",
+      "seconds": 1.366,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_cancellation_advances_queue_without_duplicate_notifications",
+      "seconds": 1.28,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_cancel_before_return_prevents_notification",
+      "seconds": 1.474,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_double_cancel_and_foreign_owner",
+      "seconds": 1.161,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_cancel_failure_rolls_back_status",
+      "seconds": 1.102,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_reservation_log_failure_rolls_back_new_row",
+      "seconds": 1.044,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_inactive_first_member_does_not_block_active_queue",
+      "seconds": 1.332,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_member_without_profile_cannot_create_reservation",
+      "seconds": 1.744,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_queue_order_uses_time_then_id",
+      "seconds": 1.245,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_concurrent_duplicate_reservations",
+      "seconds": 1.275,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_private_notifications_and_read_badge",
+      "seconds": 2.125,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_member_cannot_reserve_for_other_member",
+      "seconds": 1.527,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_member_reserves_own_profile_and_cancels",
+      "seconds": 1.799,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_member_cannot_see_or_cancel_others_reservations",
+      "seconds": 1.8,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_anonymous_pages[/rezervasyonlar]",
+      "seconds": 0.895,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_anonymous_pages[/rezervasyonlar/ekle]",
+      "seconds": 0.875,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_anonymous_pages[/bildirimler]",
+      "seconds": 0.856,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_csrf_and_no_get_mutation[/rezervasyonlar/ekle]",
+      "seconds": 1.127,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_csrf_and_no_get_mutation[/rezervasyonlar/1/iptal]",
+      "seconds": 1.188,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_reservations",
+      "name": "test_csrf_and_no_get_mutation[/bildirimler/1/oku]",
+      "seconds": 1.212,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_salted_password_hashes",
+      "seconds": 0.729,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_corrupt_password_hash_fails_closed[unknown$salt$hash]",
+      "seconds": 0.969,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_corrupt_password_hash_fails_closed[pbkdf2:sha256:bad$salt$hash]",
+      "seconds": 1.012,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_corrupt_password_hash_fails_closed[scrypt:bad$salt$hash]",
+      "seconds": 0.916,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_corrupt_password_hash_fails_closed[plaintext]",
+      "seconds": 0.689,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_logout_revokes_copied_signed_cookie",
+      "seconds": 1.163,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_deactivate_reactivate_does_not_revive_old_cookie",
+      "seconds": 1.413,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_pre_migration_cookie_is_rejected",
+      "seconds": 0.903,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_session_fields_cannot_elevate_member[user_id-999]",
+      "seconds": 0.98,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_session_fields_cannot_elevate_member[session_version-999]",
+      "seconds": 0.859,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_session_fields_cannot_elevate_member[role-admin]",
+      "seconds": 0.987,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_sql_injection_search_is_literal[' OR 1=1 ---/kitaplar]",
+      "seconds": 0.918,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_sql_injection_search_is_literal[' OR 1=1 ---/uyeler]",
+      "seconds": 0.867,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_sql_injection_search_is_literal[' OR 1=1 ---/rezervasyonlar]",
+      "seconds": 0.887,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_sql_injection_search_is_literal['; DROP TABLE books; ---/kitaplar]",
+      "seconds": 1.028,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_sql_injection_search_is_literal['; DROP TABLE books; ---/uyeler]",
+      "seconds": 0.936,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_sql_injection_search_is_literal['; DROP TABLE books; ---/rezervasyonlar]",
+      "seconds": 0.971,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_sql_injection_search_is_literal[%_\\\\-/kitaplar]",
+      "seconds": 0.786,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_sql_injection_search_is_literal[%_\\\\-/uyeler]",
+      "seconds": 1.025,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_sql_injection_search_is_literal[%_\\\\-/rezervasyonlar]",
+      "seconds": 0.824,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_sql_injection_write_stores_text_without_executing",
+      "seconds": 0.872,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_stored_xss_escaped_in_catalog_edit_and_dashboard[<script>window.__xss=1</script>]",
+      "seconds": 0.931,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_stored_xss_escaped_in_catalog_edit_and_dashboard[<img src=x onerror=\"window.__xss=1\">]",
+      "seconds": 1.01,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_stored_xss_escaped_in_catalog_edit_and_dashboard[\"><svg onload=alert(1)>]",
+      "seconds": 0.937,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_reflected_xss_in_search_is_escaped[/kitaplar]",
+      "seconds": 1.088,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_reflected_xss_in_search_is_escaped[/uyeler]",
+      "seconds": 0.883,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_control_characters_rejected_in_ebook_and_cover[\\x00]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_control_characters_rejected_in_ebook_and_cover[\\x01]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_control_characters_rejected_in_ebook_and_cover[\\x1f]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_control_characters_rejected_in_ebook_and_cover[\\x7f]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_control_characters_rejected_in_ebook_and_cover[\\\\]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_empty_url_userinfo_rejected",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_wrong_typed_physical_details_have_validation_error",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_csrf_header_and_cross_session",
+      "seconds": 1.1,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_real_http_is_blocked_in_automated_tests",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_security",
+      "name": "test_existing_database_session_migration_preserves_records",
+      "seconds": 0.052,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_daily_rates[0-StudentPenalty-2]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_daily_rates[0-TeacherPenalty-1]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_daily_rates[0-StandardPenalty-5]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_daily_rates[1-StudentPenalty-2]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_daily_rates[1-TeacherPenalty-1]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_daily_rates[1-StandardPenalty-5]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_daily_rates[5-StudentPenalty-2]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_daily_rates[5-TeacherPenalty-1]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_daily_rates[5-StandardPenalty-5]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_daily_rates[365-StudentPenalty-2]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_daily_rates[365-TeacherPenalty-1]",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_daily_rates[365-StandardPenalty-5]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_abstract_strategy",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_change_strategy_on_same_calculator",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_no_penalty_before_or_on_due_date[returned0]",
+      "seconds": 0.004,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_no_penalty_before_or_on_due_date[returned1]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_calendar_days_across_leap_day",
+      "seconds": 0.001,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_invalid_days[-1]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_invalid_days[1.5]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_invalid_days[True]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_invalid_days[5]",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_invalid_strategy_and_dates",
+      "seconds": 0.002,
+      "status": "passed"
+    },
+    {
+      "module": "tests.test_strategy",
+      "name": "test_custom_strategy_without_changing_context",
+      "seconds": 0.002,
+      "status": "passed"
+    }
+  ]
+}

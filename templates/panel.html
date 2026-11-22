@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}{{ 'Yönetici alanı' if section == 'admin' else 'Hesabım' if section == 'account' else 'Panel' }} · Kütüphane{% endblock %}
+{% block content %}
+<section class="panel">
+  <span class="badge">{{ 'Yönetici' if g.user.role == 'admin' else 'Üye' }} OTURUMU</span>
+  <h1>{{ 'Yönetici alanı' if section == 'admin' else 'Hesabım' if section == 'account' else 'Hoş geldiniz, ' ~ g.user.username ~ '.' }}</h1>
+  {% if section == 'admin' %}
+    <p>Bu alana yalnızca yönetici rolüne sahip aktif hesaplar erişebilir. Kitaplar bölümünden koleksiyona kitap ekleyebilir, mevcut kitapları düzenleyebilir ve geçmişi olmayan kayıtları silebilirsiniz.</p>
+    <a class="button" href="{{ url_for('books.index') }}">Kitapları yönet →</a>
+  {% elif section == 'account' %}
+    {% if member %}<dl class="profile"><dt>Ad soyad</dt><dd>{{ member.full_name }}</dd><dt>E-posta</dt><dd>{{ member.email }}</dd><dt>Üyelik türü</dt><dd>{{ {'student':'Öğrenci','teacher':'Öğretmen','standard':'Normal Üye'}[member.member_type] }}</dd></dl>
+    {% else %}<p>Hesabınıza bağlı bir üye kaydı bulunamadı. Yöneticinize başvurun.</p>{% endif %}
+  {% else %}<p>Oturumunuz açık. Yetkinize uygun alana aşağıdan ulaşabilirsiniz.</p>
+    <a class="button" href="{{ url_for('dashboard.admin') if g.user.role == 'admin' else url_for('dashboard.account') }}">{{ 'Yönetici alanına git' if g.user.role == 'admin' else 'Hesabımı görüntüle' }} →</a>
+  {% endif %}
+  <p class="note">Kitaplar menüsünden koleksiyona ulaşabilirsiniz. Gösterim kayıtları gerçek kütüphane işlemleri değildir.</p>
+</section>
+{% endblock %}

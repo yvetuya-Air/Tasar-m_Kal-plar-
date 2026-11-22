@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Raporlar{% endblock %}
+{% block content %}
+<div class="page-heading no-print"><h1>Raporlar</h1></div>
+<section class="panel no-print">
+  <form method="get" action="{{ url_for('reports.index') }}" class="search-controls">
+    <label for="report-type">Rapor</label><select name="report" id="report-type">{% for name,spec in specs.items() %}<option value="{{ name }}" {% if name==key %}selected{% endif %}>{{ spec.title }}</option>{% endfor %}</select>
+    <label for="start">Başlangıç</label><input id="start" name="start" type="date" value="{{ report.period[0] if report else '' }}">
+    <label for="end">Bitiş</label><input id="end" name="end" type="date" value="{{ report.period[1] if report else '' }}">
+    <button class="button" type="submit">Raporu görüntüle</button>
+  </form>
+  {% if report %}<div class="form-actions">
+    {% for key_format,label in [('pdf','PDF indir'),('xlsx','Excel indir'),('csv','CSV indir')] %}
+    <a class="button secondary-button" href="{{ url_for('reports.index', report=key, start=report.period[0], end=report.period[1], format=key_format) }}">{{ label }}</a>{% endfor %}
+    <button class="button secondary-button" type="button" data-print>Yazdır</button>
+  </div>{% endif %}
+</section>
+{% if error %}<p class="notice error" role="alert">{{ error }}</p>{% endif %}
+{% if report %}<section class="panel table-scroll">
+  <div class="form-actions">{{ icon('book') }} Kütüphane</div>
+  <h2>{{ report.title }}</h2><p>Oluşturma {{ report.generated }} · Dönem {{ report.period[0] }} – {{ report.period[1] }}</p>
+  <dl>{% for label,value in report.statistics %}<dt>{{ label }}</dt><dd>{{ value }}</dd>{% endfor %}</dl>
+  <table><thead><tr>{% for label in report.columns %}<th scope="col">{{ label }}</th>{% endfor %}</tr></thead>
+  <tbody>{% for row in report.rows %}<tr>{% for value in row %}<td>{{ value if value is not none else '—' }}</td>{% endfor %}</tr>
+  {% else %}<tr><td colspan="{{ report.columns|length }}">Bu dönem için kayıt yok.</td></tr>{% endfor %}</tbody></table>
+</section>{% endif %}
+<script src="{{ url_for('static', filename='js/print.js') }}" defer></script>
+{% endblock %}

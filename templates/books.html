@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Kitaplar · Kütüphane{% endblock %}
+{% block content %}
+{% macro save_actions(book) %}
+{% if g.user.role == 'member' %}<form method="post" class="form-actions" action="{{ url_for('member_portal.list_action', book_id=book.id) }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="operation" value="add">
+  <button class="button secondary-button" name="kind" value="favorite">Favoriye ekle</button>
+  <button class="button secondary-button" name="kind" value="reading">Okuma listesine ekle</button>
+</form>{% endif %}
+{% endmacro %}
+<div class="page-heading"><div><span class="badge">KÜTÜPHANE KOLEKSİYONU</span><h1>Kitaplar</h1><p>Fiziksel ve elektronik kitapları keşfedin.</p></div>
+<div class="form-actions"><a class="button secondary-button" href="{{ url_for('google_books.discover') }}">Kitap Keşfet</a>{% if g.user.role == 'admin' %}<a class="button" href="{{ url_for('books.add') }}">+ Kitap ekle</a>{% endif %}</div></div>
+<section class="panel catalog">
+  <form class="search-form" method="get" action="{{ url_for('books.index') }}">
+    <label for="q">Koleksiyonda ara</label><div class="search-controls"><input id="q" name="q" value="{{ query }}" maxlength="200" placeholder="Kitap adı, yazar veya ISBN"><button class="button" type="submit">Ara</button>{% if query %}<a href="{{ url_for('books.index') }}">Temizle</a>{% endif %}</div>
+    <details {% if pagination|length > 1 %}open{% endif %}><summary>Gelişmiş arama</summary>
+    <div class="book-form">
+    {% for field,label in [('title','Kitap adı'),('author','Yazar'),('isbn','ISBN'),('language','Dil'),('publication_year','Yayın yılı')] %}
+      <div class="field"><label for="filter-{{ field }}">{{ label }}</label><input id="filter-{{ field }}" name="{{ field }}" value="{{ filters[field] }}" maxlength="200"></div>
+    {% endfor %}
+    {% for field,label,options in [
+      ('category_id','Kategori',[]),
+      ('book_type','Kitap türü',[('physical','Fiziksel Kitap'),('ebook','Elektronik Kitap'),('audio','Sesli Kitap')]),
+      ('stock','Stok',[('available','Mevcut'),('unavailable','Mevcut değil')]),
+      ('sort','Sırala',[('title','Alfabetik'),('popular','Popüler'),('recent','Yeni eklenenler')]),
+      ('view','Görünüm',[('list','Liste'),('grid','Kapaklı ızgara')])] %}
+      <div class="field"><label for="filter-{{ field }}">{{ label }}</label><select id="filter-{{ field }}" name="{{ field }}"><option value="">Varsayılan</option>
+      {% if field=='category_id' %}{% for item in categories %}<option value="{{ item.id }}" {% if filters[field]==item.id|string %}selected{% endif %}>{{ item.name }}</option>{% endfor %}
+      {% else %}{% for key,text in options %}<option value="{{ key }}" {% if filters[field]==key %}selected{% endif %}>{{ text }}</option>{% endfor %}{% endif %}
+      </select></div>
+    {% endfor %}
+    </div><div class="form-actions"><button class="button" type="submit">Uygula</button><a href="{{ url_for('books.index') }}">Filtreleri temizle</a></div>
+    </details>
+  </form>
+  <p class="note">{{ count }} kitap kaydı{% if query %} · “{{ query }}” için sonuçlar{% endif %}</p>
+  {% if books and filters.view == 'grid' %}<div class="import-grid">
+  {% for book,available in books %}<article class="import-card"><div class="cover-frame">{% if book.cover_url %}<img src="{{ book.cover_url }}" alt="" loading="lazy" referrerpolicy="no-referrer">{% else %}Kapak yok{% endif %}</div>
+  <div class="import-info"><h2>{{ book.title }}</h2><p>{{ book.author }} · {{ book.type_label }}</p><p>{{ book.isbn or 'ISBN belirtilmemiş' }} · {{ available }}/{{ book.total_copies }}</p>
+  {% if g.user.role=='admin' %}<a href="{{ url_for('books.edit', book_id=book.id) }}">Düzenle</a>{% endif %}{% if not available %}<a href="{{ url_for('reservations.add',book_id=book.id) }}">Rezerve et</a>{% endif %}{{ save_actions(book) }}</div></article>{% endfor %}</div>
+  {% elif books %}<div class="table-scroll"><table><caption class="sr-only">Kitap koleksiyonu</caption><thead><tr><th scope="col">Kitap / Yazar</th><th scope="col">Tür</th><th scope="col">ISBN</th><th scope="col">Mevcut / Toplam</th><th scope="col">İşlemler</th></tr></thead><tbody>
+  {% for book, available in books %}<tr><td>{% if book.cover_url %}<img class="catalog-cover" src="{{ book.cover_url }}" alt="" loading="lazy" referrerpolicy="no-referrer" width="36" height="52">{% endif %}<strong>{{ book.title }}</strong><span class="table-subtitle">{{ book.author }}</span>{% if book.publisher or book.publication_year or book.language %}<span class="table-subtitle">{{ [book.publisher, book.publication_year, book.language]|select|join(' ? ') }}</span>{% endif %}{% if book.description %}<details><summary>A??klama</summary><p>{{ book.description }}</p></details>{% endif %}</td><td><span class="type-pill">{{ book.type_label }}</span></td><td>{{ book.isbn or '—' }}</td><td><span class="{{ 'available' if available else 'unavailable' }}">{{ available }}</span> / {{ book.total_copies }}{% if not available %}<a class="table-subtitle" href="{{ url_for('reservations.add',book_id=book.id) }}">Rezerve et</a>{% endif %}</td>
+  {% if g.user.role == 'admin' %}<td><div class="table-actions"><a href="{{ url_for('books.edit', book_id=book.id) }}" aria-label="{{ book.title }} kitabını düzenle">Düzenle</a><a class="danger-link" href="{{ url_for('books.delete', book_id=book.id) }}" aria-label="{{ book.title }} kitabını sil">Sil</a></div></td>{% else %}<td>{{ save_actions(book) }}</td>{% endif %}</tr>{% endfor %}
+  </tbody></table></div>
+  {% else %}<div class="empty-state"><h2>Kitap bulunamadı</h2><p>{{ 'Farklı bir kitap adı, yazar veya ISBN ile tekrar arayın.' if query else 'Koleksiyona henüz kitap eklenmemiş.' }}</p></div>{% endif %}
+  {% if pages > 1 %}<nav class="pagination" aria-label="Kitap sayfaları">{% if page > 1 %}<a href="{{ url_for('books.index', page=page-1, **pagination) }}">← Önceki</a>{% endif %}<span>{{ page }} / {{ pages }}</span>{% if page < pages %}<a href="{{ url_for('books.index', page=page+1, **pagination) }}">Sonraki →</a>{% endif %}</nav>{% endif %}
+</section>
+{% endblock %}

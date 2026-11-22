@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}{{ 'Kitabı düzenle' if book else 'Kitap ekle' }} · Kütüphane{% endblock %}
+{% block content %}
+<a href="{{ url_for('books.index') }}">← Kitaplara dön</a>
+<section class="panel book-editor"><span class="badge">KOLEKSİYON YÖNETİMİ</span><h1>{{ 'Kitabı düzenle' if book else 'Yeni kitap ekle' }}</h1><p>Kitap türünü seçin ve koleksiyon bilgilerini doldurun.</p>
+{% if error %}<div class="notice error" role="alert">{{ error }}</div>{% endif %}
+{% if import_draft %}<div class="notice" role="status"><strong>{{ import_source }} bilgileri forma aktarıldı.</strong> Kaydetmeden önce bilgileri kontrol edin ve raf konumunu veya dosya adresini girin.{% for warning in import_draft.warnings %}<p>{{ warning }}</p>{% endfor %}</div>{% endif %}
+{% if import_draft and import_draft.thumbnail %}<div class="cover-frame"><img src="{{ import_draft.thumbnail }}" alt="Kitap kapağı" referrerpolicy="no-referrer"></div>{% endif %}
+<form method="post" enctype="multipart/form-data" action="{{ url_for('books.edit', book_id=book.id) if book else url_for('books.add') }}" class="book-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="field full"><label for="book_type">Kitap türü</label><select id="book_type" name="book_type" required><option value="physical" {% if data.get('book_type') == 'physical' %}selected{% endif %}>Fiziksel Kitap</option><option value="ebook" {% if data.get('book_type') == 'ebook' %}selected{% endif %}>Elektronik Kitap</option><option value="audio" {% if data.get('book_type') == 'audio' %}selected{% endif %}>Sesli Kitap</option></select></div>
+  <div class="field full"><label for="title">Kitap adı</label><input id="title" name="title" value="{{ data.get('title') or '' }}" maxlength="200" required></div>
+  <div class="field"><label for="author">Yazar</label><input id="author" name="author" value="{{ data.get('author') or '' }}" maxlength="160" required></div>
+  <div class="field"><label for="isbn">ISBN <span>(isteğe bağlı)</span></label><input id="isbn" name="isbn" value="{{ data.get('isbn') or '' }}" maxlength="24" aria-describedby="isbn-help"><small id="isbn-help">Geçerli 10 veya 13 karakter; tireler kaldırılır.</small></div>
+  <div class="field"><label for="category_id">Kategori</label><select id="category_id" name="category_id"><option value="">Kategorisiz</option>{% for category in categories %}<option value="{{ category.id }}" {% if data.get('category_id')|string == category.id|string %}selected{% endif %}>{{ category.name }}</option>{% endfor %}</select></div>
+  <div class="field"><label for="total_copies">Adet / Lisans sayısı</label><input id="total_copies" name="total_copies" type="number" value="{{ data.get('total_copies', 1) }}" min="1" max="10000" required><small>Elektronik kitap için eşzamanlı lisans sayısıdır.</small></div>
+  <div class="field full" id="physical-fields"><label for="shelf_location">Raf konumu</label><input id="shelf_location" name="shelf_location" value="{{ data.get('shelf_location') or '' }}" maxlength="80"><small>Fiziksel kitapta zorunludur.</small></div>
+  {% if book and book.managed_media %}<p class="note full">Yüklenen dijital dosya korunur.</p>{% else %}
+  <div class="field full" id="ebook-fields"><label for="file_url">Harici dosya adresi</label><input id="file_url" name="file_url" type="url" value="{{ data.get('file_url') or '' }}" maxlength="2000" placeholder="https://…"><small>PDF yükleyecekseniz bu alanı boş bırakın.</small></div>
+  <div class="field full" id="upload-fields"><label for="media">Dijital dosya</label><input id="media" name="media" type="file" accept=".pdf,.mp3,.wav"><small>PDF, MP3 veya WAV, en fazla 32 MB.</small><label><input type="checkbox" name="rights" value="yes"> Kütüphanenin bu dosyayı dağıtma hakkı var.</label></div>
+  {% endif %}
+  <noscript><p>Fiziksel kitapta dosya adresini; elektronik kitapta raf konumunu boş bırakın.</p></noscript>
+  <div class="field"><label for="publisher">Yayınevi</label><input id="publisher" name="publisher" value="{{ data.get('publisher') or '' }}" maxlength="200"></div>
+  <div class="field"><label for="publication_year">Yayın yılı</label><input id="publication_year" name="publication_year" type="number" min="1" max="9999" value="{{ data.get('publication_year') or '' }}"></div>
+  <div class="field"><label for="language">Dil</label><input id="language" name="language" value="{{ data.get('language') or '' }}" maxlength="50"></div>
+  <div class="field"><label for="cover_url">Kapak adresi</label><input id="cover_url" name="cover_url" type="url" value="{{ data.get('cover_url') or '' }}" maxlength="2000"><small>Google Books veya Open Library kapak adresi.</small></div>
+  <div class="field full"><label for="description">Açıklama</label><textarea id="description" name="description" rows="4" maxlength="10000">{{ data.get('description') or '' }}</textarea></div>
+  <div class="form-actions full"><button class="button" type="submit">{{ 'Değişiklikleri kaydet' if book else 'Kitabı ekle' }}</button><a href="{{ url_for('books.index') }}">Vazgeç</a></div>
+</form></section>
+<script src="{{ url_for('static', filename='js/books.js') }}" defer></script>
+{% endblock %}

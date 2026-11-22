@@ -1,0 +1,36 @@
+classDiagram
+    direction TB
+    class Observer {
+        <<abstract>>
+        +update(book_id, title)
+    }
+    class Subject {
+        <<abstract>>
+        +attach(observer)
+        +detach(observer)
+        +notify()
+    }
+    class BookAvailabilitySubject {
+        +__init__(book_id, title)
+        +attach(observer)
+        +detach(observer)
+        +notify()
+    }
+    class MemberObserver {
+        +__init__(reservation_id, notification_service)
+        +update(book_id, title)
+    }
+    class NotificationService {
+        +__init__(db)
+        +publish_availability(book_id)
+        +notify_reserved_member(reservation_id, book_id, title)
+        +allows(member_id, kind)
+        +publish(kind, event_key, message, member_ids)
+        +store_event(member_id, kind, key, message)
+        +expire_holds(book_id)
+    }
+    Subject <|-- BookAvailabilitySubject
+    Observer <|-- MemberObserver
+    BookAvailabilitySubject --> Observer : gözlemciler
+    MemberObserver --> NotificationService : update devri
+    NotificationService ..> BookAvailabilitySubject : yayın

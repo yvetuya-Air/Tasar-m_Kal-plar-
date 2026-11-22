@@ -1,0 +1,3 @@
+{% extends 'base.html' %}
+{% block title %}Rezervasyon işlemi · Kütüphane{% endblock %}
+{% block content %}<section class="panel"><h1>Rezervasyon güncellenemedi</h1><div class="notice error" role="alert">{{ message }}</div><a class="button" href="{{ url_for('reservations.index') }}">Rezervasyonlara dön</a></section>{% endblock %}

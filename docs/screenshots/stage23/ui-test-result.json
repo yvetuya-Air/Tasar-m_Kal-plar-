@@ -1,0 +1,45 @@
+{
+  "auditStage": 23,
+  "status": "passed",
+  "checks": 137,
+  "javascriptErrors": [],
+  "expectedHttp": [
+    {
+      "path": "/giris",
+      "status": 401
+    },
+    {
+      "path": "/uyeler",
+      "status": 403
+    }
+  ],
+  "browserVersion": "157.0.8103.79",
+  "finishedAt": "2026-11-18T12:32:38.333Z",
+  "viewports": [
+    1440,
+    768,
+    390
+  ],
+  "integratedWorkflow": [
+    "borrow",
+    "reserve",
+    "return",
+    "private_notification",
+    "mark_read",
+    "cancel",
+    "stored_xss"
+  ],
+  "screenshots": [
+    "analitik.png",
+    "dashboard-acik.png",
+    "dashboard-koyu.png",
+    "dashboard-mobil.png",
+    "giris-hatasi.png",
+    "giris.png",
+    "pdf-okuyucu.png",
+    "raporlar.png",
+    "sesli-kitap.png",
+    "tasarim-kaliplari.png",
+    "uye-karti.png"
+  ]
+}

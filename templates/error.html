@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}{{ code }} · Kütüphane{% endblock %}
+{% block content %}
+<section class="panel">
+  <span class="badge">{{ code }}</span>
+  <h1>{{ {400:'İstek doğrulanamadı',403:'Erişim izniniz yok',404:'Sayfa bulunamadı',405:'Bu işlem desteklenmiyor',413:'İstek çok büyük',422:'İstek işlenemedi',500:'Beklenmeyen bir sorun oluştu',503:'Veritabanı geçici olarak kullanılamıyor'}[code] }}</h1>
+  <p>{{ {400:'Güvenlik doğrulaması başarısız veya istek geçersiz. Sayfayı yenileyip tekrar deneyin.',403:'Bu sayfayı görüntülemek için gerekli izinlere sahip değilsiniz.',404:'Aradığınız sayfa mevcut değil.',405:'Lütfen işlemi sayfadaki ilgili form üzerinden gerçekleştirin.',413:'Gönderilen bilgiler boyut sınırını aşıyor. Alanları kısaltıp tekrar deneyin.',422:'İçerik görüntülenemedi veya geçersiz bir değer gönderildi.',500:'İşlem tamamlanamadı. Lütfen daha sonra tekrar deneyin.',503:'İşlem tamamlanamadı. Lütfen daha sonra sayfayı yenileyip kayıt durumunu kontrol edin.'}[code] }}</p>
+  <a class="button" href="{{ url_for('index') }}">Ana sayfaya dön</a>
+</section>
+{% endblock %}

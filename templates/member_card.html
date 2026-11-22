@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Üye Kartım{% endblock %}
+{% block content %}
+<div class="page-heading"><h1>Üye Kartım</h1></div>
+{% if card %}<section class="panel member-card">
+  <div><div class="form-actions">{{ icon('book') }} Kütüphane</div><h2>{{ card.full_name }}</h2>
+    <dl class="profile"><dt>Üye numarası</dt><dd>{{ card.id }}</dd><dt>Üye türü</dt><dd>{{ types[card.member_type] }}</dd>
+    <dt>Kayıt tarihi</dt><dd>{{ card.created_at[:10] }}</dd><dt>Üyelik durumu</dt><dd>{{ 'Aktif' if card.is_active else 'Pasif' }}</dd></dl>
+  </div>
+  <div><img src="{{ url_for('member_cards.qr') }}" alt="Üye kartı QR kodu" width="180" height="180"></div>
+</section>
+<div class="form-actions no-print"><a class="button" href="{{ url_for('member_cards.download', file_format='pdf') }}">PDF indir</a>
+<a class="button secondary-button" href="{{ url_for('member_cards.download', file_format='png') }}">PNG indir</a>
+<button class="button secondary-button" type="button" data-print>Yazdır</button></div>
+<script src="{{ url_for('static', filename='js/print.js') }}" defer></script>
+{% else %}<p class="panel">Hesabınıza bağlı üyelik kartı bulunamadı.</p>{% endif %}
+{% endblock %}

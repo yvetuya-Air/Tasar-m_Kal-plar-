@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block title %}Kitabı sil · Kütüphane{% endblock %}
+{% block content %}
+<section class="panel"><span class="badge">KOLEKSİYON YÖNETİMİ</span><h1>Kitap silinsin mi?</h1><p><strong>{{ book.title }}</strong> · {{ book.author }}</p><p>Bu işlem geri alınamaz. Ödünç veya rezervasyon geçmişi olan kitaplar silinemez.</p>
+{% if error %}<div class="notice error" role="alert">{{ error }}</div>{% endif %}
+<form method="post" class="form-actions"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">{% if not error %}<button class="button danger-button" type="submit">Evet, kitabı sil</button>{% endif %}<a href="{{ url_for('books.index') }}">Kitaplara dön</a></form></section>
+{% endblock %}

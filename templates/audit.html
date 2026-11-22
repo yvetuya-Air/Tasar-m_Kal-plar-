@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}İşlem Geçmişi{% endblock %}
+{% block content %}
+<div class="page-heading"><h1>İşlem Geçmişi</h1></div>
+<section class="panel table-scroll">
+<table><thead><tr><th>Kullanıcı</th><th>İşlem</th><th>Tarih ve saat (UTC)</th><th>Sonuç</th><th>Ayrıntı</th></tr></thead>
+<tbody>{% for item in items %}<tr><td>{{ item.username or '—' }}</td><td>{{ actions.get(item.action,'Diğer işlem') }}</td><td>{{ item.created_at }}</td>
+<td>{{ 'Başarısız' if item.action == 'login_failed' else 'Başarılı' }}</td><td>{{ item.details }}</td></tr>
+{% else %}<tr><td colspan="5">İşlem kaydı bulunamadı.</td></tr>{% endfor %}</tbody></table>
+{% if pages > 1 %}<nav class="pagination" aria-label="İşlem geçmişi sayfaları">{% if page>1 %}<a href="{{ url_for('system.audit',page=page-1) }}">Önceki</a>{% endif %}
+<span>{{ page }} / {{ pages }}</span>{% if page<pages %}<a href="{{ url_for('system.audit',page=page+1) }}">Sonraki</a>{% endif %}</nav>{% endif %}
+</section>
+{% endblock %}

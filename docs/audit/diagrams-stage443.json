@@ -1,0 +1,48 @@
+{
+  "executed_at": "2026-11-20T09:01:21.160Z",
+  "status": "passed",
+  "diagrams": [
+    {
+      "name": "factory",
+      "status": "passed",
+      "viewBox": "4 4 949.68359375 1202",
+      "labels": 44
+    },
+    {
+      "name": "adapter",
+      "status": "passed",
+      "viewBox": "4 4 1089.015625 964",
+      "labels": 46
+    },
+    {
+      "name": "strategy",
+      "status": "passed",
+      "viewBox": "4 4 806.15625 634",
+      "labels": 15
+    },
+    {
+      "name": "observer",
+      "status": "passed",
+      "viewBox": "4 4 571.015625 1270",
+      "labels": 27
+    },
+    {
+      "name": "er",
+      "status": "passed",
+      "viewBox": "4 4 2013.3306884765625 2904",
+      "labels": 447
+    },
+    {
+      "name": "architecture-1",
+      "status": "passed",
+      "viewBox": "4 4 722.51171875 1004.148681640625",
+      "labels": 15
+    },
+    {
+      "name": "architecture-2",
+      "status": "passed",
+      "viewBox": "-50 -10 1881.5 833",
+      "labels": 30
+    }
+  ]
+}

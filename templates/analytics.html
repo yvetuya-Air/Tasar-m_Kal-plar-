@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Analitik Panel{% endblock %}
+{% block content %}
+<div class="page-heading"><h1>Analitik Panel</h1></div>
+<section class="panel search-form"><form method="get" action="{{ url_for('analytics.index') }}" class="search-controls">
+  <label for="analytics-start">Başlangıç</label><input id="analytics-start" name="start" type="date" value="{{ period[0] if period else '' }}" required>
+  <label for="analytics-end">Bitiş</label><input id="analytics-end" name="end" type="date" value="{{ period[1] if period else '' }}" required>
+  <button type="submit" class="button">Dönemi uygula</button>
+</form></section>
+{% if error %}<p class="notice error" role="alert">{{ error }}</p>{% endif %}
+{% if cards %}
+<p class="note">Ceza, yeni üye ve dönem grafikleri seçili tarihleri kullanır. Stok ile aktif ödünç ve rezervasyon göstergeleri güncel durumu gösterir.</p>
+<div class="stat-grid">{% for title,value in cards %}<article class="stat-card"><div class="stat-top">{{ title }}</div><strong class="stat-value">{{ value }}</strong></article>{% endfor %}</div>
+<div class="import-grid">{% for chart in charts %}<article class="panel">
+<h2>{{ chart.title }}</h2>
+{% if chart.rows %}<ul class="analytics-bars">{% for label,value in chart.rows %}<li>
+  <label for="chart-{{ loop.index0 }}-{{ chart.title|replace(' ','-') }}">{{ label }}</label><meter id="chart-{{ loop.index0 }}-{{ chart.title|replace(' ','-') }}" min="0" max="{{ chart.total }}" value="{{ value }}">{{ value }}</meter>
+  <output>{{ value }}</output></li>{% endfor %}</ul>
+<details class="chart-data"><summary>Veri tablosu</summary><table><thead><tr><th>Grup</th><th>Değer</th></tr></thead><tbody>{% for label,value in chart.rows %}<tr><td>{{ label }}</td><td>{{ value }}</td></tr>{% endfor %}</tbody></table></details>
+{% else %}<p>Bu dönem için veri yok.</p>{% endif %}
+</article>{% endfor %}</div>
+{% endif %}
+{% endblock %}

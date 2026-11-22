@@ -1,0 +1,59 @@
+{% from '_icons.html' import icon %}
+<!doctype html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('static',filename='images/favicon.svg') }}">
+  <title>{% block title %}Kütüphane Yönetim Sistemi{% endblock %}</title>
+  <script src="{{ url_for('static',filename='js/theme.js') }}"></script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <noscript><link rel="stylesheet" href="{{ url_for('static',filename='css/no-script.css') }}"></noscript>
+  <script src="{{ url_for('static',filename='js/ui.js') }}" defer></script>
+</head>
+<body class="{{ 'app-body' if g.user else 'public-body' }}">
+  <a class="skip-link" href="#main-content">İçeriğe geç</a>
+  {% if g.user %}
+  <button class="sidebar-backdrop" id="sidebar-backdrop" aria-label="Menüyü kapat" hidden></button>
+  <aside class="sidebar" id="sidebar" aria-label="Kütüphane menüsü">
+    <a class="brand" href="{{ url_for('dashboard.panel') }}"><span class="brand-mark">{{ icon('book') }}</span><span>Kütüphane<small>YÖNETİM SİSTEMİ</small></span></a>
+    <span class="nav-caption">ÇALIŞMA ALANI</span>
+    <nav class="sidebar-nav" aria-label="Ana menü">
+      {% set links=[('dashboard.panel','home','Ana Sayfa','dashboard'),('books.index','book','Kitaplar','books'),('google_books.discover','search','Kitap Keşfet','google_books'),('digital.index','book','Dijital Kütüphane','digital')] %}
+      {% if g.user.role == 'admin' %}
+        {% set links=links+[('analytics.index','home','Analitik','analytics'),('members.index','users','Üyeler','members'),('categories.index','book','Kategoriler','categories'),('member_cards.scan','search','Üye Tanıma','member_cards'),('reports.index','book','Raporlar','reports'),('system.audit','calendar','İşlem Geçmişi','system')] %}
+      {% else %}
+        {% set links=links+[('member_portal.my_books','book','Kitaplarım',''),('member_portal.shelf','book','Favorilerim',''),('member_portal.shelf','book','Okuma Listem',''),('member_portal.history','book','Okuma Geçmişim',''),('member_cards.card','users','Üye Kartım','member_cards'),('member_portal.profile','users','Profilim','')] %}
+      {% endif %}
+      {% set is_admin = g.user.role == 'admin' %}
+      {% set links=links+[('loans.index','loans','Ödünç İşlemleri' if is_admin else 'Ödünç İşlemlerim','loans'),('reservations.index','calendar','Rezervasyonlar' if is_admin else 'Rezervasyonlarım','reservations'),('member_portal.penalties','loans','Cezalar' if is_admin else 'Cezalarım',''),('notifications.index','bell','Bildirimler' if is_admin else 'Bildirimlerim','notifications')] %}
+      {% for endpoint,symbol,label,prefix in links %}
+        {% set href=url_for(endpoint, name='favorilerim' if label=='Favorilerim' else 'okuma-listem') if endpoint=='member_portal.shelf' else url_for(endpoint) %}
+        {% set selected=request.path == href if not prefix or prefix == 'dashboard' else request.blueprint == prefix %}
+        <a href="{{ href }}" class="nav-item {{ 'active' if selected else '' }}" aria-label="{{ label }}" title="{{ label }}" {% if selected %}aria-current="page"{% endif %}>{{ icon(symbol) }}<span>{{ label }}</span>{% if prefix == 'notifications' %}<span class="notification-count" aria-label="{{ unread_notifications }} okunmamış bildirim">{{ unread_notifications }}</span>{% endif %}</a>
+      {% endfor %}
+    </nav>
+    <span class="nav-caption">KEŞFET VE YÖNET</span>
+    <nav class="sidebar-nav" aria-label="Diğer sayfalar"><a class="nav-item {{ 'active' if request.blueprint == 'design_patterns' else '' }}" href="{{ url_for('design_patterns.index') }}">{{ icon('pattern') }}<span>Tasarım Kalıpları</span></a><a class="nav-item {{ 'active' if request.blueprint == 'settings' else '' }}" href="{{ url_for('settings.index') }}">{{ icon('settings') }}<span>Ayarlar</span></a></nav>
+    <div class="sidebar-bottom"><div class="course-note"><span class="course-dot"></span><div>Bilgiyi birlikte büyütüyoruz.<small>EBLG443 · Tasarım Kalıpları</small></div></div><form action="{{ url_for('auth.logout') }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="nav-item logout-button" type="submit">{{ icon('logout') }}<span>Çıkış yap</span></button></form></div>
+  </aside>
+  <div class="app-workspace">
+    <header class="topbar"><div class="topbar-start"><button id="menu-toggle" class="icon-button mobile-menu" aria-label="Menüyü aç" aria-controls="sidebar" aria-expanded="false">{{ icon('menu') }}</button><button id="sidebar-collapse" class="icon-button" type="button" aria-label="Kenar menüsünü daralt" aria-controls="sidebar" aria-expanded="true">{{ icon('menu') }}</button><div class="breadcrumb">Çalışma alanı <span>/</span> <strong>{{ {'books':'Kitaplar','google_books':'Harici Katalog','members':'Üyeler','loans':'Ödünç İşlemleri','reservations':'Rezervasyonlar','notifications':'Bildirimler','settings':'Ayarlar','design_patterns':'Tasarım Kalıpları'}.get(request.blueprint,'Genel Bakış') }}</strong></div></div>
+    <form class="global-search" method="get" action="{{ url_for('books.index') }}">
+      <label class="sr-only" for="global-query">Koleksiyonda ara</label>
+      <input type="search" id="global-query" name="q" maxlength="200" placeholder="Koleksiyonda ara">
+      <button class="icon-button" type="submit" aria-label="Ara">{{ icon('search') }}</button>
+    </form><div class="topbar-actions"><button class="icon-button theme-toggle" type="button" aria-label="Koyu temaya geç">{{ icon('moon','theme-moon') }}{{ icon('sun','theme-sun') }}</button><a class="icon-button topbar-bell" href="{{ url_for('notifications.index') }}" aria-label="Bildirimler: {{ unread_notifications }} okunmamış">{{ icon('bell') }}{% if unread_notifications %}<span class="unread-dot"></span>{% endif %}</a><span class="topbar-divider"></span><a class="user-chip" href="{{ url_for('dashboard.account') if g.user.role == 'member' else url_for('settings.index') }}"><span class="avatar">{{ g.user.username[0]|upper }}</span><span class="user-label"><strong>{{ g.user.username }}</strong><small>{{ 'Yönetici' if g.user.role == 'admin' else 'Üye' }}</small></span></a></div></header>
+  {% else %}
+    <header class="public-header"><a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">{{ icon('book') }}</span><span>Kütüphane<small>YÖNETİM SİSTEMİ</small></span></a><div class="topbar-actions"><button class="icon-button theme-toggle" type="button" aria-label="Koyu temaya geç">{{ icon('moon','theme-moon') }}{{ icon('sun','theme-sun') }}</button><a class="button secondary-button" href="{{ url_for('auth.login') }}">Giriş yap {{ icon('arrow') }}</a></div></header>
+  {% endif %}
+  <main id="main-content" class="{{ 'app-main' if g.user else 'public-main' }}" tabindex="-1">
+    {% set messages=get_flashed_messages(with_categories=true) %}{% if messages %}<div class="toast-stack">{% for category,message in messages %}<div class="notice flash-notice {{ 'error' if category=='error' else '' }}" role="{{ 'alert' if category=='error' else 'status' }}">{{ icon('check') }}<span>{{ message }}</span><button class="icon-button dismiss-notice" type="button" aria-label="Mesajı kapat">{{ icon('close') }}</button></div>{% endfor %}</div>{% endif %}
+    {% block content %}{% endblock %}
+    <footer class="page-footer"><span>Kütüphane Yönetim Sistemi</span><span>EBLG443 · Bilgiye açılan kapınız</span></footer>
+  </main>
+  {% if g.user %}</div>{% endif %}
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title"><div class="confirm-content"><span class="dialog-symbol">{{ icon('help') }}</span><h2 id="confirm-title">İşlemi onaylayın</h2><p id="confirm-message"></p><div class="form-actions"><button type="button" class="button" id="confirm-yes">Evet, devam et</button><button type="button" class="button secondary-button" id="confirm-no">Vazgeç</button></div></div></dialog>
+</body>
+</html>

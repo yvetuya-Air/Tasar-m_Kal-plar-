@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Kitap Keşfet · Kütüphane{% endblock %}
+{% block content %}
+{% set search_endpoint = 'google_books.discover' if discovery else 'google_books.search' %}
+{% set detail_endpoint = 'google_books.detail' if discovery else 'google_books.preview' %}
+<a href="{{ url_for('books.index') }}">← Kitaplara dön</a>
+<div class="page-heading"><div><h1>Kitap Keşfet</h1><p>Google Books ve Open Library kataloglarında arayın.</p></div></div>
+<section class="panel google-search"><form method="post" action="{{ url_for(search_endpoint) }}" class="book-form">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="field"><label for="search-title">Kitap adı</label><input id="search-title" name="title" value="{{ values.get('title','') }}" maxlength="200" placeholder="Örneğin: Nutuk"></div>
+  <div class="field"><label for="search-author">Yazar</label><input id="search-author" name="author" value="{{ values.get('author','') }}" maxlength="200" placeholder="Yazar adı"></div>
+  <div class="field"><label for="search-isbn">ISBN</label><input id="search-isbn" name="isbn" value="{{ values.get('isbn','') }}" maxlength="24" placeholder="ISBN-10 veya ISBN-13"></div>
+  <div class="field"><label for="search-source">Kaynak</label><select id="search-source" name="source">{% for key, label in sources.items() %}<option value="{{ key }}" {% if source == key %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></div>
+  <div class="field search-submit"><button class="button" type="submit">Ara</button></div>
+</form><p class="note">En az bir alan doldurun. Seçilen kaynak yanıt veremezse aynı arama diğer kaynakta tekrarlanır.</p></section>
+{% if error %}<div class="notice error" role="alert">{{ error }}</div>{% endif %}
+{% if notice %}<div class="notice" role="status">{{ notice }}</div>{% endif %}
+{% if result %}
+  <p class="note">{{ result.books|length }} sonuç gösteriliyor · {{ sources[source] }}</p>
+  {% if not result.books %}<section class="panel empty-state"><h2>Bu sayfada sonuç bulunamadı</h2><p>Arama alanlarını azaltmayı veya farklı bir başlık, yazar ya da ISBN kullanmayı deneyin.</p></section>{% endif %}
+  <div class="import-grid">{% for result in result.books %}<article class="import-card">
+    <div class="cover-frame">{% if result.thumbnail %}<img src="{{ result.thumbnail }}" alt="{{ result.title or 'Kitap' }} kapağı" loading="lazy" referrerpolicy="no-referrer">{% else %}<span>Kapak<br>bulunamadı</span>{% endif %}</div>
+    <div class="import-info"><h2>{{ result.title or 'Başlık bilgisi yok' }}</h2><p>{{ result.author or 'Yazar bilgisi yok' }}</p><p class="isbn-label">ISBN: {{ result.isbn or 'Belirtilmemiş' }}</p>
+    <p>Yayın tarihi · {{ result.publication_date or result.publication_year or 'Belirtilmemiş' }}</p>
+    <p>Kaynak · {{ sources[source] }}</p>
+    <form action="{{ url_for(detail_endpoint) }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="source" value="{{ source }}"><input type="hidden" name="source_id" value="{{ result.source_id }}"><button class="button" type="submit">{{ 'Ayrıntıları gör' if discovery else 'Seç ve düzenle' }} →</button></form></div>
+  </article>{% endfor %}</div>
+  {% if page > 1 or has_next %}
+  <nav aria-label="Arama sonucu sayfaları">
+    <form action="{{ url_for(search_endpoint) }}" method="post" class="pagination">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <input type="hidden" name="source" value="{{ source }}">
+      {% for key, value in values.items() %}<input type="hidden" name="{{ key }}" value="{{ value }}">{% endfor %}
+      {% if page > 1 %}<button class="button secondary-button" name="page" value="{{ page - 1 }}">← Önceki</button>{% endif %}
+      <span>Sayfa {{ page }}</span>
+      {% if has_next %}<button class="button secondary-button" name="page" value="{{ page + 1 }}">Sonraki →</button>{% endif %}
+    </form>
+  </nav>
+  {% endif %}
+{% endif %}
+{% endblock %}

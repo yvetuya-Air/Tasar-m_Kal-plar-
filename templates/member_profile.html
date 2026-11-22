@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}Profilim{% endblock %}
+{% block content %}
+<section class="panel book-editor"><h1>Profilim</h1>
+{% if error %}<div class="notice error" role="alert">{{ error }}</div>{% endif %}
+{% if member %}
+<form method="post" action="{{ url_for('member_portal.profile') }}" class="book-form">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<div class="field"><label for="full_name">Ad soyad</label><input id="full_name" name="full_name" value="{{ member.full_name }}" maxlength="160" required></div>
+<div class="field"><label for="email">E-posta</label><input id="email" name="email" type="email" value="{{ member.email }}" maxlength="254" required></div>
+<div class="form-actions full"><button class="button" type="submit">Kaydet</button><a href="{{ url_for('member_portal.password') }}">Parolayı değiştir</a></div>
+</form>{% else %}<p>Hesabınıza bağlı bir üye kaydı bulunamadı.</p>{% endif %}
+</section>
+{% endblock %}

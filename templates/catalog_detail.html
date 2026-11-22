@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Kitap ayrıntısı · Kütüphane{% endblock %}
+{% block content %}
+<a href="{{ url_for('google_books.discover') }}">← Kitap Keşfet</a>
+<article class="panel book-editor">
+  <div class="import-card">
+    <div class="cover-frame">{% if book.thumbnail %}<img src="{{ book.thumbnail }}" alt="Kitap kapağı" referrerpolicy="no-referrer">{% else %}<span>Kapak bulunamadı</span>{% endif %}</div>
+    <div class="import-info">
+      <h1>{{ book.title or 'Başlık bilgisi yok' }}</h1>
+      <dl class="profile">
+        <dt>Yazar</dt><dd>{{ book.author or 'Belirtilmemiş' }}</dd>
+        <dt>ISBN</dt><dd>{{ book.isbn or 'Belirtilmemiş' }}</dd>
+        <dt>Yayın tarihi</dt><dd>{{ book.publication_date or book.publication_year or 'Belirtilmemiş' }}</dd>
+        {% if book.publisher %}<dt>Yayınevi</dt><dd>{{ book.publisher }}</dd>{% endif %}
+        {% if book.language %}<dt>Dil</dt><dd>{{ book.language }}</dd>{% endif %}
+        <dt>Kaynak</dt><dd>{{ source_label }}</dd>
+      </dl>
+    </div>
+  </div>
+  <h2>Açıklama</h2>
+  <p>{{ book.description or 'Açıklama bulunamadı.' }}</p>
+  {% if can_import %}
+  <form method="post" action="{{ url_for('google_books.preview') }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="source" value="{{ source }}">
+    <input type="hidden" name="source_id" value="{{ book.source_id }}">
+    <button type="submit" class="button">İçe aktar ve düzenle</button>
+  </form>
+  {% endif %}
+</article>
+{% endblock %}

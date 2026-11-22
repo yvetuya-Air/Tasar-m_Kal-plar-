@@ -1,0 +1,25 @@
+classDiagram
+    direction TB
+    class PenaltyStrategy {
+        <<abstract>>
+        +calculate(days_late)
+    }
+    class StudentPenalty {
+        +calculate(days_late)
+    }
+    class TeacherPenalty {
+        +calculate(days_late)
+    }
+    class StandardPenalty {
+        +calculate(days_late)
+    }
+    class PenaltyCalculator {
+        +__init__(strategy)
+        +set_strategy(strategy)
+        +overdue_days(due_on, returned_on)
+        +calculate(due_on, returned_on)
+    }
+    PenaltyStrategy <|-- StudentPenalty
+    PenaltyStrategy <|-- TeacherPenalty
+    PenaltyStrategy <|-- StandardPenalty
+    PenaltyCalculator --> PenaltyStrategy : değiştirilebilir strateji

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Ödünç ve Ceza Politikaları{% endblock %}
+{% block content %}
+<div class="page-heading"><h1>Ödünç ve Ceza Politikaları</h1></div>
+<section class="panel">
+{% if error %}<p class="notice error" role="alert">{{ error }}</p>{% endif %}
+<form method="post" action="{{ url_for('settings.circulation') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  {% for key,label in types.items() %}
+  <fieldset><legend>{{ label }}</legend><div class="book-form">
+    {% for field,(text,minimum,maximum) in fields.items() %}<div class="field">
+      <label for="{{ key }}-{{ field }}">{{ text }}</label>
+      <input id="{{ key }}-{{ field }}" name="{{ key }}_{{ field }}" type="number" min="{{ minimum }}" max="{{ maximum }}" value="{{ values[key][field] }}" required>
+    </div>{% endfor %}
+  </div></fieldset>{% endfor %}
+  <div class="field"><label for="hold-hours">Ayırma süresi (saat)</label><input id="hold-hours" name="hold_hours" type="number" min="1" max="720" value="{{ hours }}" required></div>
+  <div class="form-actions"><button type="submit" class="button">Ayarları kaydet</button></div>
+</form>
+</section>
+{% endblock %}
